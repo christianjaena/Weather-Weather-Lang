@@ -12,4 +12,4 @@ Put .env file at the root directory
     npm start
 
 ### Step 4
-Open [http://localhost:5000](http://localhost:5000)
+Open [http://localhost:3000](http://localhost:3000)
