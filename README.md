@@ -2,10 +2,10 @@
 
 ### Step 0
 
-    Use your feet.
+Use your feet.
 
 ### Step 1
-    Put .env file at the root directory
+Put .env file at the root directory
 
 ### Step 2
 
@@ -14,3 +14,6 @@
 ### Step 3
 
     npm start
+
+### Step 4
+Open [http://localhost:5000](http://localhost:5000)
