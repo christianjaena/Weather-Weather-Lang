@@ -1,9 +1,5 @@
 ### HOW TO RUN:
 
-### Step 0
-
-Use your feet.
-
 ### Step 1
 Put .env file at the root directory
 
