@@ -1,1 +1,0 @@
-console.log('SKRRRTT FR FR NGL TBH ISTG IG');
