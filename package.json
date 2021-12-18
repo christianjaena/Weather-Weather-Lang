@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run open",
-    "open": "concurrently \"nodemon --ext *\" \"start http://localhost:3000/\""
+    "start": "nodemon --ext *"
   },
   "keywords": [],
   "author": "",
