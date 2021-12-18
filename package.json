@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run open",
-    "open": "concurrently \"nodemon index.js\" \"start http://localhost:3000/\""
+    "open": "concurrently \"nodemon --ext *\" \"start http://localhost:3000/\""
   },
   "keywords": [],
   "author": "",
@@ -15,11 +15,13 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "linqjs": "^1.0.2",
-    "mongoose": "^5.12.11",
-    "nodemon": "^2.0.7"
+    "mongoose": "^5.12.11"
   },
   "devDependencies": {
     "concurrently": "^6.5.0",
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3",
+    "nodemon": "^2.0.7",
     "morgan": "^1.10.0"
   }
 }
