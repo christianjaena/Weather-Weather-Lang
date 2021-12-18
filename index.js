@@ -44,4 +44,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ** ROUTES ** //
-app.get('/user', userRoutes);
+app.use('/user', userRoutes);

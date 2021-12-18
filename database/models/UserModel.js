@@ -3,10 +3,6 @@ const { Schema, model: Model } = mongoose;
 
 const userSchema = new Schema(
   {
-    id: {
-      type: Number,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
@@ -19,5 +15,5 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = Model('User', userSchema);
-module.exports = User;
+const UserSchema = Model('User', userSchema);
+module.exports = UserSchema;
