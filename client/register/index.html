@@ -14,12 +14,18 @@
     <title>Weather Weather Lang</title>
   </head>
   <body>
-    <h3>Home</h3>
-    <p id="username">Hello!, </p>
-    <button id="logoutButton">Logout</button>
+    <h3>Register</h3>
+    <label for="username">Username</label><br />
+    <input type="text" id="usernameInput" name="username" /><br />
+    <label for="email">Email</label><br />
+    <input type="text" id="emailInput" name="email" /><br />
+    <label for="password">Password</label><br />
+    <input type="password" id="passwordInput" name="password" />
+    <button id="registerButton">Register</button>
+    <a href="http://localhost:3000/">Already have an account? Log in.</a>
 
     <!-- Import this to use Linq.js -->
-    <script src="./libraries/linq.min.js"></script>
+    <script src="../libraries/linq.min.js"></script>
     <!---->
     <script type="module" async defer src="script.js"></script>
     <script

@@ -1,16 +1,23 @@
-const email = document.getElementById('emailInput');
-const password = document.getElementById('passwordInput');
-const registerButton = document.getElementById('registerButton');
+(async function authUser() {
+  let getRequest = await fetch('http://localhost:3000/auth');
+  let response = await getRequest;
+  if (response.redirected) {
+    window.location.href = response.url;
+  }
+})();
 
-registerButton.addEventListener('click', async (e) => {
-  e.preventDefault();
-  let postRequest = await fetch('http://localhost:3000/user/register', {
+const logoutButton = document.getElementById('logoutButton');
+const username = document.getElementById('username');
+username.innerHTML += localStorage.getItem('username');
+
+logoutButton.addEventListener('click', async () => {
+  let postRequest = await fetch('http://localhost:3000/logout', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email: email.value, password: password.value }),
   });
-  let result = await postRequest.json();
-  console.log(result);
+  let response = await postRequest;
+  localStorage.removeItem('userID');
+  localStorage.removeItem('username');
+  if (response.redirected) {
+    window.location.href = response.url;
+  }
 });

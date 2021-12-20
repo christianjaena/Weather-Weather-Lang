@@ -2,24 +2,14 @@ const express = require('express');
 const route = express.Router();
 
 const {
-  getUsersController,
-  getUserByIdController,
-  addUserController,
-  updateUserByIdController,
+  registerUserController,
   deleteUsersController,
-  deleteUserByIdController,
+  loginUserController,
 } = require('../controllers/userControllers.js');
 
-route.get('/', getUsersController);
 
-route.get('/:id', getUserByIdController);
-
-route.post('/register', addUserController);
-
-route.put('/:id', updateUserByIdController);
-
+route.post('/register', registerUserController);
+route.post('/login', loginUserController);
 route.delete('/', deleteUsersController);
-
-route.delete('/:id', deleteUserByIdController);
 
 module.exports = route;
