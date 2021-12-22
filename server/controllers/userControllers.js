@@ -34,7 +34,6 @@ const loginUserController = async (req, res) => {
       res.redirect('/');
     } else {
       req.session.isAuth = true;
-      console.log(user.username, user.email);
       res.status(200).json({
         userID: user._id,
         username: user.username,

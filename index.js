@@ -70,4 +70,5 @@ app.post('/logout', async (req, res) => {
     res.redirect('/login');
   });
 });
+
 app.use('/user', userRoutes);
