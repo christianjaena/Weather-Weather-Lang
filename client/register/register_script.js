@@ -16,8 +16,9 @@ registerButton.addEventListener('click', async (e) => {
       password: password.value,
     }),
   });
-  let response = await postRequest;
-  if (response.redirected) {
-    window.location.href = response.url;
+  let response = await postRequest.json();
+  alert(response.message);
+  if (response.hasOwnProperty('redirectURL')) {
+    window.location.href = response.redirectURL;
   }
 });

@@ -15,8 +15,11 @@ loginButton.addEventListener('click', async (e) => {
     }),
   });
   let response = await postRequest.json();
-  localStorage.setItem('userID', response.userID);
-  // TEMPORARY
-  localStorage.setItem('username', response.username);
-  window.location.href = response.url;
+  alert(response.message);
+  if (response.hasOwnProperty('userID')) {
+    localStorage.setItem('userID', response?.userID);
+    // TEMPORARY
+    localStorage.setItem('username', response.username);
+    window.location.href = response.redirectURL;
+  }
 });

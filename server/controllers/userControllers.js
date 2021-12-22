@@ -6,7 +6,7 @@ const registerUserController = async (req, res) => {
 
   let user = await UserModel.findOne({ email });
   if (user) {
-    res.redirect('/register');
+    res.status(400).json({ message: 'User with this email already exists' });
   } else {
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -18,8 +18,13 @@ const registerUserController = async (req, res) => {
 
     user
       .save()
-      .then((result) => res.redirect('/login'))
-      .catch((err) => res.status(400).json(err.message));
+      .then(() =>
+        res.status(200).json({
+          message: 'Registered successfuly',
+          redirectURL: 'http://localhost:3000/login',
+        })
+      )
+      .catch((err) => res.status(400).json(err));
   }
 };
 
@@ -27,18 +32,23 @@ const loginUserController = async (req, res) => {
   const { email, password } = req.body;
   let user = await UserModel.findOne({ email });
   if (!user) {
-    res.redirect('/login');
+    res.status(400).json({
+      message: 'No such user found',
+    });
   } else {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      res.redirect('/');
+      res.status(400).json({
+        message: 'Invalid Password',
+      });
     } else {
       req.session.isAuth = true;
       res.status(200).json({
+        message: 'Log in successful',
         userID: user._id,
         username: user.username,
         email: user.email,
-        url: 'http://localhost:3000/',
+        redirectURL: 'http://localhost:3000/',
       });
     }
   }
