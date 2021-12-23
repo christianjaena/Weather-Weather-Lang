@@ -4,7 +4,7 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -57,7 +57,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #ecf0f3 !important; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -1592,15 +1592,17 @@ pre {
   display: block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem 0.95rem !important;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
+  color: #495057 !important;
+  background-color: #ecf0f3 !important;
   background-clip: padding-box;
+  box-shadow: inset 2px 2px 5px #babecc,
+              inset -5px -5px 10px #ffffff73 !important;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-radius: 10px !important;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2053,6 +2055,8 @@ textarea.form-control {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }
   @media (prefers-reduced-motion: reduce) {
     .btn {
+      box-shadow: inset 2px 2px 5px #babecc,
+              inset -5px -5px 10px #ffffff73 !important;
       -webkit-transition: none;
       -o-transition: none;
       transition: none; } }
@@ -8144,7 +8148,7 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #e3b04b; }
+  color: #007db9; }
   a:hover, a:focus {
     text-decoration: none !important;
     outline: none !important;
@@ -8159,7 +8163,7 @@ h1, h2, h3, h4, h5,
   color: #000; }
 
 .bg-primary {
-  background: #e3b04b !important; }
+  background: #007db9 !important; }
 
 .ftco-section {
   padding: 7em 0; }
@@ -8182,11 +8186,11 @@ h1, h2, h3, h4, h5,
 .wrap {
   width: 100%;
   overflow: hidden;
-  background: #fff;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); }
+  background: #ecf0f3;
+  border-radius: 20px;
+  -webkit-box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+  -moz-box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+  box-shadow: 13px 13px 20px #d1ecf8, -13px -13px 20px #fff !important; }
 
 .img, .login-wrap {
   width: 50%; }
@@ -8206,7 +8210,7 @@ h1, h2, h3, h4, h5,
 .form-group {
   position: relative; }
   .form-group .label {
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #000;
@@ -8219,27 +8223,28 @@ h1, h2, h3, h4, h5,
   background: #fff;
   color: #000;
   font-size: 16px;
+  letter-spacing: 0.7px;
   border-radius: 5px;
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid rgba(0, 0, 0, 0.1); }
   .form-control::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: rgba(0, 0, 0, 0.2) !important; }
+    color: #495057 !important; }
   .form-control::-moz-placeholder {
     /* Firefox 19+ */
-    color: rgba(0, 0, 0, 0.2) !important; }
+    color: #495057 !important; }
   .form-control:-ms-input-placeholder {
     /* IE 10+ */
-    color: rgba(0, 0, 0, 0.2) !important; }
+    color: #495057 !important; }
   .form-control:-moz-placeholder {
     /* Firefox 18- */
-    color: rgba(0, 0, 0, 0.2) !important; }
+    color: #495057 !important; }
   .form-control:focus, .form-control:active {
     outline: none !important;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border: 1px solid #e3b04b; }
+    border: 1px solid #007db9; }
 
 .social-media {
   position: relative;
@@ -8249,6 +8254,14 @@ h1, h2, h3, h4, h5,
     width: 40px;
     height: 40px;
     background: transparent;
+    box-shadow: -7px -7px 20px 0px #fff9,
+              -4px -4px 5px 0px #fff9,
+              7px 7px 20px 0px #0002,
+              4px 4px 5px 0px #0001,
+              inset 0px 0px 0px 0px #fff9,
+              inset 0px 0px 0px 0px #0001,
+              inset 0px 0px 0px 0px #fff9,
+              inset 0px 0px 0px 0px #0001 !important;
     border: 1px solid rgba(0, 0, 0, 0.05);
     font-size: 16px;
     margin-right: 5px;
@@ -8256,7 +8269,7 @@ h1, h2, h3, h4, h5,
     .social-media .social-icon span {
       color: #999999; }
     .social-media .social-icon:hover, .social-media .social-icon:focus {
-      background: #e3b04b; }
+      background: #007db9; }
       .social-media .social-icon:hover span, .social-media .social-icon:focus span {
         color: #fff; }
 
@@ -8313,31 +8326,33 @@ h1, h2, h3, h4, h5,
 
 /* Style the checkmark/indicator */
 .checkbox-primary {
-  color: #e3b04b; }
+  color: #007db9; }
   .checkbox-primary input:checked ~ .checkmark:after {
-    color: #e3b04b; }
+    color: #007db9; }
 
 .btn {
   cursor: pointer;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
+  border-radius: 8px !important;
   font-size: 15px;
+  letter-spacing: 2px;
   padding: 10px 20px; }
   .btn:hover, .btn:active, .btn:focus {
     outline: none; }
   .btn.btn-primary {
-    background: #e3b04b !important;
-    border: 1px solid #e3b04b !important;
+    background: #007db9 !important;
+    border: 1px solid #007db9 !important;
     color: #fff !important; }
     .btn.btn-primary:hover {
-      border: 1px solid #e3b04b;
-      background: transparent;
-      color: #e3b04b; }
+      border: 1px solid #6ac5f0 !important;      ;
+      background: #6ac5f0 !important;
+      color: #007db9; }
     .btn.btn-primary.btn-outline-primary {
-      border: 1px solid #e3b04b;
+      border: 1px solid #007db9;
       background: transparent;
-      color: #e3b04b; }
+      color: #007db9; }
       .btn.btn-primary.btn-outline-primary:hover {
-        border: 1px solid transparent;
-        background: #e3b04b;
+        border: 1px solid #6ac5f0 !important;
+        background: #6ac5f0;
         color: #fff; }
