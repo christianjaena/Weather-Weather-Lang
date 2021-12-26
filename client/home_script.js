@@ -1,6 +1,9 @@
 const logoutButton = document.getElementById('logoutButton');
 const username = document.getElementById('username');
-username.innerHTML += localStorage.getItem('username');
+const location = document.getElementById('location');
+username.innerHTML += `<a href="http://localhost:3000/user">${localStorage.getItem(
+  'username'
+)}</a>`;
 
 logoutButton.addEventListener('click', async () => {
   let postRequest = await fetch('http://localhost:3000/session/logout', {
@@ -13,3 +16,19 @@ logoutButton.addEventListener('click', async () => {
     window.location.href = response.url;
   }
 });
+
+(function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    location.innerHTML = 'Geolocation is not supported by this browser.';
+  }
+})();
+
+function showPosition(position) {
+  location.innerHTML =
+    'Latitude: ' +
+    position.coords.latitude +
+    '<br>Longitude: ' +
+    position.coords.longitude;
+}
