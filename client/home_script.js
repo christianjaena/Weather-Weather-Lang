@@ -3,7 +3,7 @@ const username = document.getElementById('username');
 username.innerHTML += localStorage.getItem('username');
 
 logoutButton.addEventListener('click', async () => {
-  let postRequest = await fetch('http://localhost:3000/logout', {
+  let postRequest = await fetch('http://localhost:3000/session/logout', {
     method: 'POST',
   });
   let response = await postRequest;
