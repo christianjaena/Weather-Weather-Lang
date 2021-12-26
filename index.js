@@ -13,6 +13,7 @@ require('linqjs');
 
 const userRoutes = require('./server/routes/userRoutes');
 const sessionRoutes = require('./server/routes/sessionRoutes');
+const weatherRoutes = require('./server/routes/weatherRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -55,8 +56,9 @@ app.use(
     store,
   })
 );
-app.use(connectLiveReload());
+
 app.use(express.static('client'));
+app.use(connectLiveReload());
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
@@ -65,5 +67,5 @@ app.use(express.urlencoded({ extended: true }));
 // ** ROUTES ** //
 
 app.use('/session', sessionRoutes);
-
 app.use('/user', userRoutes);
+app.use('/weather', weatherRoutes);
