@@ -5,6 +5,9 @@ const location = document.getElementById('location');
 
 const city = document.getElementById('cityInput');
 const citySearchButton = document.getElementById('citySearchButton');
+const citiesNearMyCoordinates = document.getElementById(
+  'citiesNearMyCoordinatesButton'
+);
 const results = document.getElementById('results');
 
 const latitudeInput = document.getElementById('latitudeInput');
@@ -13,9 +16,19 @@ const coordinatesSearchButton = document.getElementById(
   'coordinatesSearchButton'
 );
 
+let userLatitude, userLongitude;
+
 username.innerHTML += `<a href="http://localhost:3000/user">${localStorage.getItem(
   'username'
 )}</a>`;
+
+citiesNearMyCoordinates.addEventListener('click', async () => {
+  await getCitiesNearMyLocation(userLatitude, userLongitude);
+});
+
+coordinatesSearchButton.addEventListener('click', async () => {
+  await getCitiesNearMyLocation(latitudeInput.value, longitudeInput.value);
+});
 
 logoutButton.addEventListener('click', async () => {
   let postRequest = await fetch('http://localhost:3000/session/logout', {
@@ -36,24 +49,29 @@ citySearchButton.addEventListener('click', async () => {
       city: city.value,
     }
   );
-  results.innerHTML = '';
+  results.innerHTML = '<h1>Search Result(s)</h1>';
   response.forEach((res) => {
     results.innerHTML += `<a href="#">${res.title} ${res.location_type}</a><br>`;
   });
 });
 
-coordinatesSearchButton.addEventListener('click', async () => {
+async function getCitiesNearMyLocation(latitude, longitude) {
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/coordinates',
-    { latitude: latitudeInput.value, longitude: longitudeInput.value }
+    { latitude, longitude }
   );
-  console.log(response);
-  results.innerHTML = '';
-  results.innerHTML = '<h1>Cities Near Your Coordinate</h1>';
+  results.innerHTML = '<h1>Cities Near Your Coordinates</h1>';
   response.forEach((res) => {
-    results.innerHTML += `<a href="#">${res.title} ${res.location_type}</a><br>`;
+    results.innerHTML += `<a href="#">${res.title} ${res.location_type}</a><p>Distance (Meters): ${res.distance}</p><p>Coordinates: ${res.latt_long}</p> <br/>`;
   });
-});
+}
+
+function showPosition(position) {
+  userLatitude = position.coords.latitude;
+  userLongitude = position.coords.longitude;
+  location.innerHTML =
+    'Latitude: ' + userLatitude + '<br>Longitude: ' + userLongitude;
+}
 
 (function getLocation() {
   if (navigator.geolocation) {
@@ -62,11 +80,3 @@ coordinatesSearchButton.addEventListener('click', async () => {
     location.innerHTML = 'Geolocation is not supported by this browser.';
   }
 })();
-
-function showPosition(position) {
-  location.innerHTML =
-    'Latitude: ' +
-    position.coords.latitude +
-    '<br>Longitude: ' +
-    position.coords.longitude;
-}
