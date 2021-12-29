@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.main-container{
+    background-color: #f4f4f4;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar{
+    height: 80px;
+    width: 100%;
+    background-color: #3a8841;
+    
+}
+
+.logo{
+    width: 60px;
+    height: 60px;
+    padding: 20px 100px;
+}
