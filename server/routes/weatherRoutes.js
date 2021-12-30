@@ -2,10 +2,10 @@ const express = require('express');
 const route = express.Router();
 
 const {
-    locationSearchController,
-    coordinatesSearchController,
-    locationInfoController,
-    locationDayInfoController   
+  locationSearchController,
+  coordinatesSearchController,
+  locationInfoController,
+  locationDayInfoController,
 } = require('../controllers/weatherControllers.js');
 
 route.post('/search/location', locationSearchController);
