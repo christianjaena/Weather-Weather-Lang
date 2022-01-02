@@ -6,5 +6,5 @@ export async function postHTTPRequest(url, body) {
     },
     body: JSON.stringify(body),
   });
-  return response.json();
+  return await response.json();
 }

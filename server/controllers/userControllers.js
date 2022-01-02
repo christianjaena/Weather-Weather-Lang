@@ -1,12 +1,15 @@
 const UserModel = require('../../database/models/userModel');
 const bcrypt = require('bcryptjs');
+require('linqjs');
 
 const registerUserController = async (req, res) => {
   const { username, email, password } = req.body;
 
   let user = await UserModel.findOne({ email });
-  if (user) {
-    res.status(400).json({ message: 'User with this email already exists' });
+  let userExists = [user];
+  // LINQ - arr.first();
+  if (userExists.first()) {
+    res.status(400).json([{ message: 'User with this email already exists' }]);
   } else {
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -19,10 +22,12 @@ const registerUserController = async (req, res) => {
     user
       .save()
       .then(() =>
-        res.status(200).json({
-          message: 'Registered successfuly',
-          redirectURL: 'http://localhost:3000/login',
-        })
+        res.status(200).json([
+          {
+            message: 'Registered successfuly',
+            redirectURL: 'http://localhost:3000/login',
+          },
+        ])
       )
       .catch((err) => res.status(400).json(err));
   }

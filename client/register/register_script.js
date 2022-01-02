@@ -18,8 +18,10 @@ registerButton.addEventListener('click', async (e) => {
         password: password.value,
       }
     );
-    alert(response.message);
-    if (response.hasOwnProperty('redirectURL'))
-      window.location.href = response.redirectURL;
+    // LINQ - arr.first();
+    let result = response.first();
+    alert(result.message);
+    if (result.hasOwnProperty('redirectURL'))
+      window.location.href = result.redirectURL;
   }
 });
