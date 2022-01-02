@@ -4,7 +4,7 @@ const METAWEATHER_API = 'https://www.metaweather.com/api/location';
 function axiosGetServerResponse(url, res) {
   axios
     .get(url)
-    .then((response) => res.status(200).json(response.data))
+    .then((response) => res.status(200).json([response.data]))
     .catch((error) => res.status(400).json(error.message));
 }
 

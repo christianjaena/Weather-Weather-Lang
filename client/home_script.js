@@ -43,16 +43,22 @@ logoutButton.addEventListener('click', async () => {
 });
 
 citySearchButton.addEventListener('click', async () => {
+  results.innerHTML = '<h1>Search Result(s)</h1>';
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/location',
     {
       city: city.value,
     }
   );
-  results.innerHTML = '<h1>Search Result(s)</h1>';
-  response.forEach((res) => {
-    results.innerHTML += `<a href="#">${res.title} ${res.location_type}</a><br>`;
-  });
+  // LINQ - arr.first()
+  let result = response.first();
+  if (result.length === 0) {
+    window.alert('City not found in the database.');
+  } else {
+    result.forEach((res) => {
+      results.innerHTML += `<a href="#">${res.title} ${res.location_type}</a><br>`;
+    });
+  }
 });
 
 async function getCitiesNearMyLocation(latitude, longitude) {
@@ -62,18 +68,28 @@ async function getCitiesNearMyLocation(latitude, longitude) {
   );
 
   results.innerHTML = '<h1>Cities Near Your Coordinates</h1><br/>';
-  response.forEach(async (result) => {
+  // LINQ - arr.first()
+  let result = response.first();
+
+  result.forEach(async (result) => {
     let res = await postHTTPRequest(
       'http://localhost:3000/weather/info/location',
       { id: result.woeid }
     );
+    // LINQ - arr.first()
+    let data = res.first();
     results.innerHTML += `
-      <h2>${res.parent.title}</h2>
-      <h4>${res.title} ${res.location_type}</h4>
-      <p>Timezone: ${res.timezone}</p>
-      <p>Coordinates: ${res.latt_long}</p>
+      <h2>${data.parent.title}</h2>
+      <h4>${data.title} ${data.location_type}</h4>
+      <p>Timezone: ${data.timezone}</p>
+      <p>Coordinates: ${data.latt_long}</p>
       `;
-    res.consolidated_weather.forEach((day) => {
+    // LINQ - arr.take(), arr.select(), arr.first()
+    let weatherInfo = res
+      .take(1)
+      .select((item) => item.consolidated_weather)
+      .first();
+    weatherInfo.forEach((day) => {
       results.innerHTML += `
       <p>Date: ${day.applicable_date}</p>
       <p>Weather Condition: ${day.weather_state_name}</p>
