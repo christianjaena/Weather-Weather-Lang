@@ -13,12 +13,14 @@ loginButton.addEventListener('click', async (e) => {
       email: email.value,
       password: password.value,
     });
-    alert(response.message);
-    if (response.hasOwnProperty('userID')) {
-      localStorage.setItem('userID', response?.userID);
+    // LINQ - arr.first()
+    let result = response.first();
+    alert(result.message);
+    if (result.hasOwnProperty('userID')) {
+      localStorage.setItem('userID', result?.userID);
       // TEMPORARY
-      localStorage.setItem('username', response.username);
-      window.location.href = response.redirectURL;
+      localStorage.setItem('username', result.username);
+      window.location.href = result.redirectURL;
     }
   }
 });

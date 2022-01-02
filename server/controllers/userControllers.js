@@ -36,25 +36,29 @@ const registerUserController = async (req, res) => {
 const loginUserController = async (req, res) => {
   const { email, password } = req.body;
   let user = await UserModel.findOne({ email });
-  if (!user) {
-    res.status(400).json({
-      message: 'No such user found',
-    });
+  let userExists = [user];
+  // LINQ - arr.first();
+  if (!userExists.first()) {
+    res.status(400).json([
+      {
+        message: 'No such user found',
+      },
+    ]);
   } else {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      res.status(400).json({
+      res.status(400).json([{
         message: 'Invalid Password',
-      });
+      }]);
     } else {
       req.session.isAuth = true;
-      res.status(200).json({
+      res.status(200).json([{
         message: 'Log in successful',
         userID: user._id,
         username: user.username,
         email: user.email,
         redirectURL: 'http://localhost:3000/',
-      });
+      }]);
     }
   }
 };
