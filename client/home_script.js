@@ -30,6 +30,10 @@ coordinatesSearchButton.addEventListener('click', async () => {
   await getCitiesNearMyLocation(latitudeInput.value, longitudeInput.value);
 });
 
+citySearchButton.addEventListener('click', async () => {
+  await getCitiesSearch(city.value);
+});
+
 logoutButton.addEventListener('click', async () => {
   let postRequest = await fetch('http://localhost:3000/session/logout', {
     method: 'POST',
@@ -42,12 +46,12 @@ logoutButton.addEventListener('click', async () => {
   }
 });
 
-citySearchButton.addEventListener('click', async () => {
+async function getCitiesSearch(city) {
   results.innerHTML = '<h1>Search Result(s)</h1>';
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/location',
     {
-      city: city.value,
+      city,
     }
   );
   // LINQ - arr.first()
@@ -55,23 +59,24 @@ citySearchButton.addEventListener('click', async () => {
   if (result.length === 0) {
     window.alert('City not found in the database.');
   } else {
-    result.forEach((res) => {
-      results.innerHTML += `<a href="#">${res.title} ${res.location_type}</a><br>`;
-    });
+    await getCityInfo(result);
   }
-});
+}
 
 async function getCitiesNearMyLocation(latitude, longitude) {
+  results.innerHTML = '<h1>Cities Near Your Coordinates</h1><br/>';
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/coordinates',
     { latitude, longitude }
   );
 
-  results.innerHTML = '<h1>Cities Near Your Coordinates</h1><br/>';
   // LINQ - arr.first()
   let result = response.first();
+  await getCityInfo(result);
+}
 
-  result.forEach(async (result) => {
+async function getCityInfo(cities) {
+  cities.forEach(async (result) => {
     let res = await postHTTPRequest(
       'http://localhost:3000/weather/info/location',
       { id: result.woeid }
@@ -98,7 +103,6 @@ async function getCitiesNearMyLocation(latitude, longitude) {
     });
   });
 }
-
 function showPosition(position) {
   userLatitude = position.coords.latitude;
   userLongitude = position.coords.longitude;

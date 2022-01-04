@@ -47,34 +47,44 @@ const loginUserController = async (req, res) => {
   } else {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      res.status(400).json([{
-        message: 'Invalid Password',
-      }]);
+      res.status(400).json([
+        {
+          message: 'Invalid Password',
+        },
+      ]);
     } else {
       req.session.isAuth = true;
-      res.status(200).json([{
-        message: 'Log in successful',
-        userID: user._id,
-        username: user.username,
-        email: user.email,
-        redirectURL: 'http://localhost:3000/',
-      }]);
+      res.status(200).json([
+        {
+          message: 'Log in successful',
+          userID: user._id,
+          username: user.username,
+          email: user.email,
+          redirectURL: 'http://localhost:3000/',
+        },
+      ]);
     }
   }
 };
 
 const deleteUsersController = async (req, res) => {
   UserModel.deleteMany()
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      res.status(400).json(err.message);
-    });
+    .then((result) => res.status(200).json(result))
+    .catch((err) => res.status(400).json(err.message));
+};
+
+const getUserInfoController = async (req, res) => {
+  let userID = req.params.id;
+  UserModel.findOne({ _id: userID })
+    .then(({ username, email, createdAt }) =>
+      res.status(200).json({ username, email, createdAt })
+    )
+    .catch((err) => res.status(400).json(err.message));
 };
 
 module.exports = {
   registerUserController,
   deleteUsersController,
   loginUserController,
+  getUserInfoController,
 };
