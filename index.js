@@ -1,4 +1,5 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -47,6 +48,12 @@ const store = new MongoDBSession({
   collection: 'sessions',
 });
 
+const limiter = rateLimit({
+  windowMs: 1000,
+  max: 1,
+  message: 'Too many requests, try again later',
+});
+
 // ** MIDDLEWARES ** //
 app.use(
   session({
@@ -58,6 +65,7 @@ app.use(
 );
 
 app.use(express.static('client'));
+app.use(limiter);
 app.use(connectLiveReload());
 app.use(morgan('dev'));
 app.use(cors());
