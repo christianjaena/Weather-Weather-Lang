@@ -82,9 +82,18 @@ const getUserInfoController = async (req, res) => {
     .catch((err) => res.status(400).json(err.message));
 };
 
+const updateUserController = async (req, res) => {
+  let userID = req.params.id;
+  let { username } = req.body;
+  UserModel.findOneAndUpdate({ _id: userID }, { username })
+    .then(({ username }) => res.status(200).json([{ username }]))
+    .catch((err) => res.status(400).json(err.message));
+};
+
 module.exports = {
   registerUserController,
   deleteUsersController,
   loginUserController,
   getUserInfoController,
+  updateUserController,
 };

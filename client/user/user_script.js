@@ -1,13 +1,30 @@
+let username = document.getElementById('username');
+let email = document.getElementById('email');
+let date = document.getElementById('date');
+let updateButton = document.getElementById('updateButton');
+let user;
+let userID;
 (async () => {
-  let userID = localStorage.getItem('userID');
+  userID = localStorage.getItem('userID');
   let request = await fetch(`http://localhost:3000/user/${userID}`);
-  let user = await request.json();
-  let username = document.getElementById('username');
-  let email = document.getElementById('email');
-  let date = document.getElementById('date');
-  let updateButton = document.getElementById('updateButton');
+  user = await request.json();
 
   username.value = user.username;
   email.innerHTML += user.email;
-  date.innerHTML += user.createdAt.split('T')[0];
+  // LINQ - arr.first()
+  date.innerHTML += user.createdAt.split('T').first();
 })();
+
+updateButton.addEventListener('click', async () => {
+  if (user.username === username.value) {
+    alert('Username has not been changed');
+  } else {
+    let request = await fetch(`http://localhost:3000/user/${userID}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: username.value }),
+    });
+    let result = await request.json();
+    alert('Username updated!');
+  }
+});
