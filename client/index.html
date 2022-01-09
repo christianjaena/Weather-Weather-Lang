@@ -105,29 +105,48 @@
     <h3>Home</h3>
     <img src="./assets/WWL Logo.png" alt="logo" height="100" width="150" />
     <p id="username">Hello!,</p>
-    <button id="logoutButton">Logout</button>
+    <button class="btn btn-danger" id="logoutButton">Logout</button>
 
     <br /><br />
 
     <h3>Current Location</h3>
     <div id="location"></div>
-    <button id="citiesNearMyCoordinatesButton">Cities Near Me</button>
+    <button class="btn btn-success" id="citiesNearMyCoordinatesButton">
+      Cities Near Me
+    </button>
 
     <br /><br />
 
-    <div>
+    <div class="form-group">
       <h3>Coordinates</h3>
-      <input id="latitudeInput" type="number" placeholder="Latitude" />
-      <input id="longitudeInput" type="number" placeholder="Longitude" />
-      <button id="coordinatesSearchButton">Search</button>
+      <input
+        class="form-control"
+        id="latitudeInput"
+        type="number"
+        placeholder="Latitude"
+      />
+      <input
+        class="form-control"
+        id="longitudeInput"
+        type="number"
+        placeholder="Longitude"
+      />
+      <button class="btn btn-primary" id="coordinatesSearchButton">
+        Search
+      </button>
     </div>
 
     <br /><br />
 
-    <div>
+    <div class="form-group">
       <h3>City Search</h3>
-      <input id="cityInput" type="text" placeholder="City" />
-      <button id="citySearchButton">Search</button>
+      <input
+        class="form-control"
+        id="cityInput"
+        type="text"
+        placeholder="City"
+      />
+      <button class="btn btn-primary" id="citySearchButton">Search</button>
     </div>
 
     <div id="results"></div>

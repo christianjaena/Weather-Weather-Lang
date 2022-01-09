@@ -50,8 +50,8 @@ const store = new MongoDBSession({
 });
 
 const limiter = rateLimit({
-  windowMs: 1000,
-  max: 1,
+  windowMs: 15 * 60 * 1000,
+  max: 100,
   message: 'Too many requests, try again later',
 });
 

@@ -103,6 +103,7 @@ async function getCityInfo(cities) {
     });
   });
 }
+
 function showPosition(position) {
   userLatitude = position.coords.latitude;
   userLongitude = position.coords.longitude;
