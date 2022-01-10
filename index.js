@@ -15,6 +15,7 @@ require('linqjs');
 const userRoutes = require('./server/routes/userRoutes');
 const sessionRoutes = require('./server/routes/sessionRoutes');
 const weatherRoutes = require('./server/routes/weatherRoutes');
+const favoriteRoutes = require('./server/routes/favoriteRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -78,3 +79,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/session', sessionRoutes);
 app.use('/user', userRoutes);
 app.use('/weather', weatherRoutes);
+app.use('/favorite', favoriteRoutes);
