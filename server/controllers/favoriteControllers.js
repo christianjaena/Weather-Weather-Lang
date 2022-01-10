@@ -28,4 +28,10 @@ const addToFavoritesController = async (req, res) => {
   }
 };
 
-module.exports = { addToFavoritesController };
+const getUserFavoritesController = async (req, res) => {
+  let userID = req.params.id;
+  FavoriteModel.find({ userID })
+    .then((result) => res.status(200).json(result))
+    .catch((err) => res.status(400).json(err.message));
+};
+module.exports = { addToFavoritesController, getUserFavoritesController };

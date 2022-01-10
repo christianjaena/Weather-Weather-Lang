@@ -49,6 +49,7 @@ logoutButton.addEventListener('click', async () => {
 
 async function getCitiesSearch(city) {
   results.innerHTML = '<h1>Loading Results ...</h1>';
+  window.scrollTo(0, document.body.scrollHeight);
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/location',
     {
@@ -65,7 +66,8 @@ async function getCitiesSearch(city) {
 }
 
 async function getCitiesNearMyLocation(latitude, longitude) {
-  results.innerHTML = '<h1>Loading Results ...</h1>';
+  results.innerHTML = '<h1 id="loading">Loading Results ...</h1>';
+  window.scrollTo(0, document.body.scrollHeight);
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/coordinates',
     { latitude, longitude }
