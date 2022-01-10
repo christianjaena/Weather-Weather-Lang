@@ -5,12 +5,12 @@ const favoriteSchema = new Schema(
   {
     woeid: {
       type: String,
-      required: true
+      required: true,
+      unique: true,
     },
     userID: {
       type: String,
       required: true,
-      unique: true,
     },
     location: {
       type: String,

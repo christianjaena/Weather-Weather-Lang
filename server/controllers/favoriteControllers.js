@@ -1,7 +1,31 @@
 const FavoriteModel = require('../../database/models/FavoritesModel');
 
 const addToFavoritesController = async (req, res) => {
-  console.log('hi');
+  const { woeid, userID, location } = req.body;
+
+  let favorite = await FavoriteModel.findOne({ woeid });
+  let favoriteExists = [favorite];
+  // LINQ - arr.first();
+  if (favoriteExists.first()) {
+    res.status(400).json([{ message: 'Already in favorites!' }]);
+  } else {
+    favorite = new FavoriteModel({
+      woeid,
+      userID,
+      location,
+    });
+
+    favorite
+      .save()
+      .then(() =>
+        res.status(200).json([
+          {
+            message: 'Added to favorites!',
+          },
+        ])
+      )
+      .catch((err) => res.status(400).json([{ message: err.message }]));
+  }
 };
 
 module.exports = { addToFavoritesController };
