@@ -89,67 +89,80 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="home_styles.css" />
-    <title>Weather Weather Lang</title>
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+
   </head>
+
   <body>
     <div class="main-container">
       <div class="navbar">
-        <img
-          class="logo"
-          src="/assets/WWL Logo Medium Shadow.png"
-          alt="WWL Logo"
-        />
+        <img class="logo" src="/client/assets/WWL Logo Mk II.png" alt="WWL Logo"/>
+
+        <div class="citysearch">
+            <div class="form-group" id="city-input-container">
+              <input class="form-control" id="cityInput" type="text" placeholder="Search City"/>
+                <button class="btn btn-primary" id="citySearchButton">
+                  <span class="iconify" id="search-icon" data-icon="fe:search"></span>
+                </button>
+            </div>
+
+            <div id="results"></div>
       </div>
+      <div class="user-nav">
+          <p id="username">Hello!,</p>
+          <button class="btn btn-danger" id="logoutButton">
+             <span class="iconify-logout" data-icon="bx:bx-log-out-circle"></span>
+          </button>
+        </div>
+
+    </div>
+    
+    <div class="main-area">
+      <div class="container1"> 
+          <span class="iconify" data-icon="ep:map-location"></span>
+          <h3>Current Location</h3>
+
+            <div id="location"></div>
+            <button class="btn btn-success" id="citiesNearMyCoordinatesButton">
+              Cities Near Me
+          </button>
+      </div>
+    
+
+    <div class="container2">
+        <div class="form-group">
+            <span class="iconify" data-icon="ep:coordinate"></span>
+            <h3>Coordinates</h3>
+
+            <input
+              class="form-control"
+              id="latitudeInput"
+              type="number"
+              placeholder="Latitude"
+            />
+            <input
+              class="form-control"
+              id="longitudeInput"
+              type="number"
+              placeholder="Longitude"
+            />
+            <button class="btn btn-primary" id="coordinatesSearchButton">
+              Search
+            </button>
+        </div>
     </div>
 
-    <h3>Home</h3>
-    <img src="./assets/WWL Logo.png" alt="logo" height="100" width="150" />
-    <p id="username">Hello!,</p>
-    <button class="btn btn-danger" id="logoutButton">Logout</button>
 
-    <br /><br />
+   
+     
+    
 
-    <h3>Current Location</h3>
-    <div id="location"></div>
-    <button class="btn btn-success" id="citiesNearMyCoordinatesButton">
-      Cities Near Me
-    </button>
+  </div>
+  </div>
 
-    <br /><br />
+   
 
-    <div class="form-group">
-      <h3>Coordinates</h3>
-      <input
-        class="form-control"
-        id="latitudeInput"
-        type="number"
-        placeholder="Latitude"
-      />
-      <input
-        class="form-control"
-        id="longitudeInput"
-        type="number"
-        placeholder="Longitude"
-      />
-      <button class="btn btn-primary" id="coordinatesSearchButton">
-        Search
-      </button>
-    </div>
-
-    <br /><br />
-
-    <div class="form-group">
-      <h3>City Search</h3>
-      <input
-        class="form-control"
-        id="cityInput"
-        type="text"
-        placeholder="City"
-      />
-      <button class="btn btn-primary" id="citySearchButton">Search</button>
-    </div>
-
-    <div id="results"></div>
+    
 
     <!-- Import this to use Linq.js -->
     <script src="./libraries/linq.min.js"></script>
