@@ -2,6 +2,7 @@ import { postHTTPRequest } from './libraries/postHTTPRequest.js';
 const logoutButton = document.getElementById('logoutButton');
 const username = document.getElementById('username');
 const location = document.getElementById('location');
+const userID = localStorage.getItem('userID');
 
 const city = document.getElementById('cityInput');
 const citySearchButton = document.getElementById('citySearchButton');
@@ -47,7 +48,8 @@ logoutButton.addEventListener('click', async () => {
 });
 
 async function getCitiesSearch(city) {
-  results.innerHTML = '<h1>Search Result(s)</h1>';
+  results.innerHTML = '<h1>Loading Results ...</h1>';
+  window.scrollTo(0, document.body.scrollHeight);
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/location',
     {
@@ -64,7 +66,8 @@ async function getCitiesSearch(city) {
 }
 
 async function getCitiesNearMyLocation(latitude, longitude) {
-  results.innerHTML = '<h1>Cities Near Your Coordinates</h1><br/>';
+  results.innerHTML = '<h1 id="loading">Loading Results ...</h1>';
+  window.scrollTo(0, document.body.scrollHeight);
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/coordinates',
     { latitude, longitude }
@@ -75,33 +78,34 @@ async function getCitiesNearMyLocation(latitude, longitude) {
   await getCityInfo(result);
 }
 
-async function getCityInfo(cities) {
-  cities.forEach(async (result) => {
-    let res = await postHTTPRequest(
-      'http://localhost:3000/weather/info/location',
-      { id: result.woeid }
-    );
-    // LINQ - arr.first()
-    let data = res.first();
-    results.innerHTML += `
-      <h2>${data.parent.title}</h2>
-      <h4>${data.title} ${data.location_type}</h4>
-      <p>Timezone: ${data.timezone}</p>
-      <p>Coordinates: ${data.latt_long}</p>
-      `;
-    // LINQ - arr.take(), arr.select(), arr.first()
-    let weatherInfo = res
-      .take(1)
-      .select((item) => item.consolidated_weather)
-      .first();
-    weatherInfo.forEach((day) => {
-      results.innerHTML += `
-      <p>Date: ${day.applicable_date}</p>
-      <p>Weather Condition: ${day.weather_state_name}</p>
-      <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
-      `;
+function setListener(attr) {
+  let elements = document.querySelectorAll(attr);
+  elements.forEach((element) => {
+    element.addEventListener('click', () => {
+      localStorage.setItem('woeid', element.id);
+      window.location.href = 'http://localhost:3000/city';
     });
   });
+}
+async function getCityInfo(cities) {
+  let resultHTML = '<h1>Search Result(s)</h1>';
+  for (let index = 0; index < cities.length; index++) {
+    let woeid = cities[index].woeid;
+    let res = await postHTTPRequest(
+      'http://localhost:3000/weather/info/location',
+      { id: woeid }
+    );
+    let data = res.first();
+    resultHTML += `
+      <h4>${data.title} ${data.location_type}</h4>
+      <h5>${data.parent.title}</h5>
+      <p>Timezone: ${data.timezone}</p>
+      <p>Coordinates: ${data.latt_long}</p>
+      <button id=${woeid} class="info btn btn-danger">Weather Details</button>
+      `;
+  }
+  results.innerHTML = resultHTML;
+  setListener('.info');
 }
 
 function showPosition(position) {

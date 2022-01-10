@@ -17,8 +17,7 @@ loginButton.addEventListener('click', async (e) => {
     let result = response.first();
     alert(result.message);
     if (result.hasOwnProperty('userID')) {
-      localStorage.setItem('userID', result?.userID);
-      // TEMPORARY
+      localStorage.setItem('userID', result.userID);
       localStorage.setItem('username', result.username);
       window.location.href = result.redirectURL;
     }
