@@ -89,49 +89,57 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="home_styles.css" />
-    <title>Weather Weather Lang</title>
+
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+   
   </head>
   <body>
+
     <div class="main-container">
       <div class="navbar">
-        <img
-          class="logo"
-          src="/assets/WWL Logo Medium Shadow.png"
-          alt="WWL Logo"
-        />
+        <img class="logo" src="./assets/WWL Logo Mk II.png" alt="WWL Logo"/>
+        
+        <p id="username">Hello!,</p>
+        <button id="logoutButton">Logout</button>
+        
       </div>
-    </div>
 
-    <h3>Home</h3>
-    <img src="./assets/WWL Logo.png" alt="logo" height="100" width="150" />
-    <p id="username">Hello!,</p>
-    <button id="logoutButton">Logout</button>
+      <div class="container1">
+        <h3>Current Location</h3>
+        <span class="iconify" data-icon="ep:map-location"></span>
 
-    <br /><br />
+        <div id="location"></div>
+        <button id="citiesNearMyCoordinatesButton">Cities Near Me</button>
+      </div>
 
-    <h3>Current Location</h3>
-    <div id="location"></div>
-    <button id="citiesNearMyCoordinatesButton">Cities Near Me</button>
-
-    <br /><br />
-
-    <div>
+     
+     <div class="container2">
       <h3>Coordinates</h3>
+      <span class="iconify" data-icon="ep:coordinate"></span>
+
       <input id="latitudeInput" type="number" placeholder="Latitude" />
       <input id="longitudeInput" type="number" placeholder="Longitude" />
       <button id="coordinatesSearchButton">Search</button>
+     </div>
+  
+     
+        
+      <div class="container3">
+        <h3>City Search</h3>
+        <span class="iconify" data-icon="fe:search"></span>
+
+        <input id="cityInput" type="text" placeholder="City" />
+        <button id="citySearchButton">Search</button>
+      </div>
+  
+      <div id="results"></div>
+  
     </div>
 
-    <br /><br />
+    
+    
 
-    <div>
-      <h3>City Search</h3>
-      <input id="cityInput" type="text" placeholder="City" />
-      <button id="citySearchButton">Search</button>
-    </div>
-
-    <div id="results"></div>
-
+   
     <!-- Import this to use Linq.js -->
     <script src="./libraries/linq.min.js"></script>
     <!---->
