@@ -31,6 +31,7 @@ backButton.addEventListener('click', () => {
   );
   // LINQ - arr.first()
   let data = res.first();
+  console.log(data);
   location = `${data.title} ${data.location_type}`;
   results.innerHTML = `
       <h2 class="location">${data.parent.title}</h2>
@@ -45,11 +46,20 @@ backButton.addEventListener('click', () => {
     .first();
   weatherInfo.forEach((day) => {
     results.innerHTML += `
-  <span>
-    <p>Date: ${day.applicable_date}</p>
-    <p>Weather Condition: ${day.weather_state_name}</p>
-    <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
-  </span>
+    <span>
+      <p><strong>Date: ${day.applicable_date}</strong></p>
+      <p>Weather Condition: ${day.weather_state_name}</p>
+      <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
+      <p>Predictability: ${day.predictability}%</p>
+      <p>Humidity: ${day.humidity}%</p>
+      <p>Average Temperature: ${day.the_temp.toFixed(2)} Celsius</p>
+      <p>Maximum Temperature: ${day.max_temp.toFixed(2)} Celsius</p>
+      <p>Minimum Temperature: ${day.min_temp.toFixed(2)} Celsius</p>
+      <p>Wind Speed: ${day.wind_speed.toFixed(2)} Miles per Hour</p>
+      <p>Wind Direction: ${day.wind_direction.toFixed(2)} ${day.wind_direction_compass}</p>
+      <p>Air Pressure: ${day.air_pressure} Millibars</p>
+      <p>Visibility: ${day.visibility.toFixed(2)} Miles</p>
+    </span>
   `;
   });
 })();
