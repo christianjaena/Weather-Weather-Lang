@@ -34,4 +34,14 @@ const getUserFavoritesController = async (req, res) => {
     .then((result) => res.status(200).json(result))
     .catch((err) => res.status(400).json(err.message));
 };
-module.exports = { addToFavoritesController, getUserFavoritesController };
+
+const deleteUserFavoritesController = async (req, res) => {
+  FavoriteModel.deleteOne({ woeid: req.params.id })
+    .then((result) => res.status(200))
+    .catch((err) => res.status(400).json(err.message));
+};
+module.exports = {
+  addToFavoritesController,
+  getUserFavoritesController,
+  deleteUserFavoritesController,
+};

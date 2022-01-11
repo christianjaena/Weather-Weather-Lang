@@ -31,7 +31,6 @@ backButton.addEventListener('click', () => {
   );
   // LINQ - arr.first()
   let data = res.first();
-  console.log(data);
   location = `${data.title} ${data.location_type}`;
   results.innerHTML = `
       <h2 class="location">${data.parent.title}</h2>
