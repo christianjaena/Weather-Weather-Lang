@@ -1,3 +1,4 @@
+import { postHTTPRequest } from '../libraries/postHTTPRequest.js';
 let username = document.getElementById('username');
 let email = document.getElementById('email');
 let date = document.getElementById('date');
@@ -17,18 +18,26 @@ let favorites;
   email.innerHTML += user.email;
   // LINQ - arr.first()
   date.innerHTML += user.createdAt.split('T').first();
+  favoritesDiv.innerHTML = '<h3>Fetching Favorites ...</h3>';
+  let favoritesHTML = '';
   for (let index = 0; index < favorites.length; index++) {
     let element = favorites[index];
-    favoritesDiv.innerHTML += `<h5 id=${element.woeid} class="fav">${element.location}</h5></br>`;
+    let res = await postHTTPRequest(
+      'http://localhost:3000/weather/info/location',
+      { id: element.woeid }
+    );
+    let data = res.first();
+    let day = data.consolidated_weather.first();
+    favoritesHTML += `
+      <h4>${data.title} ${data.location_type}</h4>
+      <h5>${data.parent.title}</h5>
+      <p>Timezone: ${data.timezone}</p>
+      <p>Coordinates: ${data.latt_long}</p>
+      <p>Weather Condition: ${day.weather_state_name}</p>
+      <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
+      `;
   }
-  let favoriteCities = document.querySelectorAll('.fav');
-  favoriteCities.forEach((element) => {
-    console.log(element);
-    element.addEventListener('click', () => {
-      localStorage.setItem('woeid', element.id);
-      window.location.href = 'http://localhost:3000/city';
-    });
-  });
+  favoritesDiv.innerHTML = favoritesHTML;
 })();
 
 updateButton.addEventListener('click', async () => {
