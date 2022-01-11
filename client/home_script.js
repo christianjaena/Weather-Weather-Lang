@@ -9,7 +9,8 @@ const citySearchButton = document.getElementById('citySearchButton');
 const citiesNearMyCoordinates = document.getElementById(
   'citiesNearMyCoordinatesButton'
 );
-const results = document.getElementById('results');
+let results = document.getElementById('results');
+let currentLocationStatus = document.getElementById('current');
 
 const latitudeInput = document.getElementById('latitudeInput');
 const longitudeInput = document.getElementById('longitudeInput');
@@ -108,14 +109,37 @@ async function getCityInfo(cities) {
   setListener('.info');
 }
 
-function showPosition(position) {
+async function showPosition(position) {
   userLatitude = position.coords.latitude;
   userLongitude = position.coords.longitude;
   location.innerHTML =
     'Latitude: ' + userLatitude + '<br>Longitude: ' + userLongitude;
+  currentLocationStatus.innerHTML =
+    '<h3>Fetching Current Location Status ...</h3>';
+  let response = await postHTTPRequest(
+    'http://localhost:3000/weather/search/coordinates',
+    { latitude: userLatitude, longitude: userLongitude }
+  );
+  // LINQ - arr.first()
+  let result = response.first();
+  let current = result.first();
+  let res = await postHTTPRequest(
+    'http://localhost:3000/weather/info/location',
+    { id: current.woeid }
+  );
+  let data = res.first();
+  let day = data.consolidated_weather.first()
+  currentLocationStatus.innerHTML = `
+      <h4>${data.title} ${data.location_type}</h4>
+      <h5>${data.parent.title}</h5>
+      <p>Timezone: ${data.timezone}</p>
+      <p>Coordinates: ${data.latt_long}</p>
+      <p>Weather Condition: ${day.weather_state_name}</p>
+      <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
+      `;
 }
 
-(function getLocation() {
+(async function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {

@@ -12,8 +12,8 @@ favoritesButton.addEventListener('click', async () => {
     location,
   };
   let res = await postHTTPRequest('http://localhost:3000/favorite/add', body);
-  let result = res.first()
-  alert(result.message)
+  let result = res.first();
+  alert(result.message);
 });
 
 backButton.addEventListener('click', () => {
