@@ -127,6 +127,7 @@ async function showPosition(position) {
     'http://localhost:3000/weather/info/location',
     { id: current.woeid }
   );
+  // LINQ - arr.first()
   let data = res.first();
   let day = data.consolidated_weather.first()
   currentLocationStatus.innerHTML = `
