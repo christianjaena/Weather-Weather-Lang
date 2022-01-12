@@ -20,9 +20,12 @@ const coordinatesSearchButton = document.getElementById(
 
 let userLatitude, userLongitude;
 
-username.innerHTML += `<a href="http://localhost:3000/user">${localStorage.getItem(
+username.innerHTML += `
+<span class="userName">
+<a href="http://localhost:3000/user">${localStorage.getItem(
   'username'
-)}</a>`;
+)}</a> </span>`;
+
 
 citiesNearMyCoordinates.addEventListener('click', async () => {
   await getCitiesNearMyLocation(userLatitude, userLongitude);
@@ -113,7 +116,8 @@ async function showPosition(position) {
   userLatitude = position.coords.latitude;
   userLongitude = position.coords.longitude;
   location.innerHTML =
-    'Latitude: ' + userLatitude + '<br>Longitude: ' + userLongitude;
+    '<div class="current-position"> Latitude: </div>' + userLatitude + 
+    '<br> <div class="current-position"> Longitude: </div>' + userLongitude;
   currentLocationStatus.innerHTML =
     '<h3>Fetching Current Location Status ...</h3>';
   let response = await postHTTPRequest(
@@ -131,13 +135,18 @@ async function showPosition(position) {
   let data = res.first();
   let day = data.consolidated_weather.first()
   currentLocationStatus.innerHTML = `
-      <h4>${data.title} ${data.location_type}</h4>
-      <h5>${data.parent.title}</h5>
-      <p>Timezone: ${data.timezone}</p>
-      <p>Coordinates: ${data.latt_long}</p>
-      <p>Weather Condition: ${day.weather_state_name}</p>
-      <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
-      `;
+      <div class="currentWeather" >
+        <div class="box1">
+          <h4>${data.title} ${data.location_type}</h4>
+          <h5>${data.parent.title}</h5>
+          <p>Timezone: ${data.timezone}</p>
+          <p>Coordinates: ${data.latt_long}</p>
+        </div>
+        <div class="box2">
+          <h3>Weather Condition: ${day.weather_state_name}</h3>
+          <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
+        </div>      
+      </div>`;
 }
 
 (async function getLocation() {
