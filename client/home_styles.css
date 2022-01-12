@@ -121,3 +121,26 @@
     margin-bottom: 10px;
     border-radius: 30px;
 }
+
+
+
+/*	Small devices Tablets (≥768px) */
+@media only screen and (min-width: 768px) {
+    * {
+        background-color: yellow;
+    }
+}	
+
+/* Medium devices Desktops (≥992px) */
+@media only screen and (min-width: 992px) {
+    * {
+        background-color: blue;
+    }
+}
+
+/* Large devices Desktops (≥1200px) */
+@media only screen and (min-width: 1200px) {
+    * {
+        background-color: red;
+    }
+}
