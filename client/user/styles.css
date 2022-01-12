@@ -1,24 +1,115 @@
 /* For mobile phones: */
+p {
+  margin: 0;
+}
 
+h3 {
+  color: #212529;
+  text-align: center;
+}
+#navbar {
+  background-color: #2081d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5em;
+}
 
+#backButtonContainer {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#pageTitleContainer {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logoContainer {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  height: 3em;
+  width: 6em;
+}
+
+#pageTitle {
+  font-size: 1.5em;
+  color: white;
+  font-weight: bold;
+}
+
+.iconify {
+  font-size: 1.5em;
+  color: white;
+}
+
+#userNameContainer {
+  text-align: center;
+}
+
+.form-control {
+  text-align: center;
+}
+
+#userInfoContainer {
+  background-color: #2081d2;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+  color: white;
+}
+
+#updateButton {
+  width: 100%;
+  margin-top: 0.5em;
+}
+
+#favorites {
+  background-color: #2081d2;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+  color: white;
+  text-align: center;
+}
+
+#emailContainer {
+  text-align: center;
+}
+
+#deleteFavorite {
+  margin-top: 1em;
+}
+
+#dateContainer {
+  text-align: center;
+}
 /*	Small devices Tablets (≥768px) */
 @media only screen and (min-width: 768px) {
-    * {
-        background-color: yellow;
-    }
-}	
+  * {
+    background-color: yellow;
+  }
+}
 
 /* Medium devices Desktops (≥992px) */
 @media only screen and (min-width: 992px) {
-    * {
-        background-color: blue;
-    }
+  * {
+    background-color: blue;
+  }
 }
 
 /* Large devices Desktops (≥1200px) */
 @media only screen and (min-width: 1200px) {
-    * {
-        background-color: red;
-    }
+  * {
+    background-color: red;
+  }
 }

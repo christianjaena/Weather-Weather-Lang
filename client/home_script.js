@@ -26,7 +26,6 @@ username.innerHTML += `
   'username'
 )}</a> </span>`;
 
-
 citiesNearMyCoordinates.addEventListener('click', async () => {
   await getCitiesNearMyLocation(userLatitude, userLongitude);
 });
@@ -116,8 +115,10 @@ async function showPosition(position) {
   userLatitude = position.coords.latitude;
   userLongitude = position.coords.longitude;
   location.innerHTML =
-    '<div class="current-position"> Latitude: </div>' + userLatitude + 
-    '<br> <div class="current-position"> Longitude: </div>' + userLongitude;
+    '<div class="current-position"> Latitude: </div>' +
+    userLatitude.toFixed(2) +
+    '<br> <div class="current-position"> Longitude: </div>' +
+    userLongitude.toFixed(2);
   currentLocationStatus.innerHTML =
     '<h3>Fetching Current Location Status ...</h3>';
   let response = await postHTTPRequest(
@@ -133,7 +134,7 @@ async function showPosition(position) {
   );
   // LINQ - arr.first()
   let data = res.first();
-  let day = data.consolidated_weather.first()
+  let day = data.consolidated_weather.first();
   currentLocationStatus.innerHTML = `
       <div class="currentWeather" >
         <div class="box1">
