@@ -138,11 +138,27 @@
             font-weight: 800;
         }
 
+      
+
+
+
+        .currentWeather .box2{
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
         .currentWeather .box2 h3{
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
         }
-        
+        .currentWeather .box2 img{
+            width: 120px;
+            height: 120px;
+        }
+        /* End of JS CSS */
+
         .main-area{
             margin: 30px 0px 0px 30px;
             padding: 20px 10px;
@@ -212,6 +228,14 @@
             font-size: 18px;
             font-weight: 700;
             color: #ffffff;
+        }
+
+        .current-position-value{
+            font-size: 15px;
+            font-weight: 300;
+            color: #ffffff;
+            margin-left: 69px;
+            
         }
         
         .city-button{
