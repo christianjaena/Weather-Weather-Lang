@@ -96,7 +96,7 @@
   <body>
     <div class="main-container">
       <div class="navbar">
-        <img class="logo" src="./assets/WWL Logo Mk II.png" alt="WWL Logo"/>
+        <img class="logo" src="./assets/WWL Logo Mk II (with text).png" alt="WWL Logo"/>
 
         <div class="citysearch">
             <div class="form-group" id="city-input-container">
@@ -105,50 +105,55 @@
                   <span class="iconify" id="search-icon" data-icon="fe:search"></span>
                 </button>
             </div>
-            <div id="current"></div>
-            <div id="results"></div>
+            
       </div>
       <div class="user-nav">
-          <p id="username">Hello!,</p>
+          <div id="username">Hello!  </div>
           <button class="btn btn-danger" id="logoutButton">
-             <span class="iconify-logout" data-icon="bx:bx-log-out-circle"></span>
+             Log Out
           </button>
         </div>
 
     </div>
+
+    <div id="results"></div>
+
+    <div class="currentWeatherWrap">
+      <img src="" alt="">
+      <div id="current"></div>
+    </div>
+
+  
     
     <div class="main-area">
+   
       <div class="container1"> 
-          <span class="iconify" data-icon="ep:map-location"></span>
-          <h3>Current Location</h3>
-
-            <div id="location"></div>
-            <button class="btn btn-success" id="citiesNearMyCoordinatesButton">
-              Cities Near Me
-          </button>
+          <h3>Current Location</h3> 
+          <div class="location-wrap">
+              <span class="iconify" data-icon="ep:map-location"></span>
+              <div class="wrap-info">
+                <div id="location"></div>
+                <button class="city-button" id="citiesNearMyCoordinatesButton">
+                  <span class="city" data-icon="fluent:city-16-filled"></span>
+                   Scan Cities Near Me
+              </button>
+          </div>
+        </div>
       </div>
     
 
     <div class="container2">
         <div class="form-group">
-            <span class="iconify" data-icon="ep:coordinate"></span>
             <h3>Coordinates</h3>
-
-            <input
-              class="form-control"
-              id="latitudeInput"
-              type="number"
-              placeholder="Latitude"
-            />
-            <input
-              class="form-control"
-              id="longitudeInput"
-              type="number"
-              placeholder="Longitude"
-            />
-            <button class="btn btn-primary" id="coordinatesSearchButton">
-              Search
-            </button>
+          <div class="coordinates-wrap">
+            <span class="iconify" data-icon="ep:coordinate"></span>
+            
+            <div class="wrap-info">
+                <input class="form-control" id="latitudeInput"  type="number"  placeholder="Latitude" />
+                <input class="form-control" id="longitudeInput" type="number"  placeholder="Longitude" />
+                <button class="coordinate-button" id="coordinatesSearchButton">  Search Coordinates </button>
+            </div>
+          </div>
         </div>
     </div>
 
