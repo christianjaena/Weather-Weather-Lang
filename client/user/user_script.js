@@ -17,9 +17,17 @@ async function getUserDetails() {
   favorites = await userFavorites.json();
 
   username.value = user.username;
-  email.innerHTML += user.email;
+  email.innerHTML += `
+  <h3>
+    ${user.email}
+  </h3>
+  `;
   // LINQ - arr.first()
-  date.innerHTML += user.createdAt.split('T').first();
+  date.innerHTML += `
+  <h3>
+    ${user.createdAt.split('T').first()}
+  </h3>
+  `;
   favoritesDiv.innerHTML = '<h4>Fetching Favorites ...</h4>';
   let favoritesHTML = '';
   if (favorites.length === 0) {
@@ -40,7 +48,9 @@ async function getUserDetails() {
       <p>Coordinates: ${data.latt_long}</p>
       <p>Weather Condition: ${day.weather_state_name}</p>
       <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
-      <button id=${element.woeid} class="delete btn btn-danger">Delete</button>
+      <div id="deleteFavorite">
+        <button id=${element.woeid} class="delete btn btn-danger">Delete</button>
+      </div>
       `;
     }
     favoritesDiv.innerHTML = favoritesHTML;

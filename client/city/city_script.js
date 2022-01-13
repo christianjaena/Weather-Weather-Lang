@@ -6,14 +6,18 @@ let woeid = localStorage.getItem('woeid');
 let location = '';
 
 favoritesButton.addEventListener('click', async () => {
-  let body = {
-    woeid,
-    userID,
-    location,
-  };
-  let res = await postHTTPRequest('http://localhost:3000/favorite/add', body);
-  let result = res.first();
-  alert(result.message);
+  if (location === '') {
+    alert('Still Fetching Data ...');
+  } else {
+    let body = {
+      woeid,
+      userID,
+      location,
+    };
+    let res = await postHTTPRequest('http://localhost:3000/favorite/add', body);
+    let result = res.first();
+    alert(result.message);
+  }
 });
 
 backButton.addEventListener('click', () => {
@@ -48,14 +52,18 @@ backButton.addEventListener('click', () => {
     <span>
       <p><strong>Date: ${day.applicable_date}</strong></p>
       <p>Weather Condition: ${day.weather_state_name}</p>
-      <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
+      <img src="https://www.metaweather.com/static/img/weather/${
+        day.weather_state_abbr
+      }.svg" height="100" width="100"/>
       <p>Predictability: ${day.predictability}%</p>
       <p>Humidity: ${day.humidity}%</p>
       <p>Average Temperature: ${day.the_temp.toFixed(2)} Celsius</p>
       <p>Maximum Temperature: ${day.max_temp.toFixed(2)} Celsius</p>
       <p>Minimum Temperature: ${day.min_temp.toFixed(2)} Celsius</p>
       <p>Wind Speed: ${day.wind_speed.toFixed(2)} Miles per Hour</p>
-      <p>Wind Direction: ${day.wind_direction.toFixed(2)} ${day.wind_direction_compass}</p>
+      <p>Wind Direction: ${day.wind_direction.toFixed(2)} ${
+      day.wind_direction_compass
+    }</p>
       <p>Air Pressure: ${day.air_pressure} Millibars</p>
       <p>Visibility: ${day.visibility.toFixed(2)} Miles</p>
     </span>

@@ -95,21 +95,49 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
     <title>Weather Weather Lang | User</title>
   </head>
   <body>
-    <button id="back" class="btn btn-danger">Back</button> 
-    <h1>User</h1>
-    <br />
-    <h4>Username: <input class="form-control" type="text" id="username" /></h4>
-    <br />
-    <button class="btn btn-primary" id="updateButton">Update</button>
-    <h4 id="email">Email:</h4>
-    <br />
-    <h4 id="date">Date Joined:</h4>
-    <br />
-    <h3>Favorites</h3>
-    <div id="favorites"></div>
+    <div id="navbar">
+      <div id="backButtonContainer">
+        <button id="back" class="btn btn-clear">
+          <span class="iconify" data-icon="bx:bx-arrow-back"></span>
+        </button>
+      </div>
+      <div id="pageTitleContainer">
+        <p id="pageTitle">User</p>
+      </div>
+      <div id="logoContainer">
+        <img
+          id="logo"
+          src="../assets/WWL Logo Mk II (with text).png"
+          alt="logo"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div id="userInfoContainer">
+        <div id="userNameContainer">
+          <h4>Username</h4>
+          <div id="usernameInputContainer">
+            <input class="form-control" type="text" id="username" />
+          </div>
+          <div id="updateButtonContainer">
+            <button class="btn btn-success" id="updateButton">Update</button>
+          </div>
+        </div>
+        <div id="emailContainer">
+          <h4 id="email">Email</h4>
+        </div>
+        <div id="dateContainer">
+          <h4 id="date">Date Joined</h4>
+        </div>
+      </div>
+      <h3>Favorites</h3>
+      <div id="favorites"></div>
+    </div>
   </body>
   <script src="../libraries/linq.min.js"></script>
   <script type="module" async defer src="user_script.js"></script>
