@@ -115,10 +115,11 @@ async function showPosition(position) {
   userLatitude = position.coords.latitude;
   userLongitude = position.coords.longitude;
   location.innerHTML =
-    '<div class="current-position"> Latitude: </div>' +
-    userLatitude.toFixed(2) +
-    '<br> <div class="current-position"> Longitude: </div>' +
-    userLongitude.toFixed(2);
+    `<div class="current-position"> Latitude: </div> 
+    <div class="current-position-value">${userLatitude.toFixed(2)}</div>
+    <br> <div class="current-position"> Longitude: </div>
+    <div class="current-position-value"> ${userLongitude.toFixed(2)}`;
+    
   currentLocationStatus.innerHTML =
     '<h3>Fetching Current Location Status ...</h3>';
   let response = await postHTTPRequest(
