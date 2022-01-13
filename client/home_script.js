@@ -117,7 +117,7 @@ async function showPosition(position) {
   location.innerHTML =
     `<div class="current-position"> Latitude: </div> 
     <div class="current-position-value">${userLatitude.toFixed(2)}</div>
-    <br> <div class="current-position"> Longitude: </div>
+    <div class="current-position"> Longitude: </div>
     <div class="current-position-value"> ${userLongitude.toFixed(2)}`;
     
   currentLocationStatus.innerHTML =
