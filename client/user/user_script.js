@@ -42,6 +42,7 @@ async function getUserDetails() {
       let data = res.first();
       let day = data.consolidated_weather.first();
       favoritesHTML += `
+      <div class="favoriteContainer">
       <h4>${data.title} ${data.location_type}</h4>
       <h5>${data.parent.title}</h5>
       <p>Timezone: ${data.timezone}</p>
@@ -50,6 +51,7 @@ async function getUserDetails() {
       <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
       <div id="deleteFavorite">
         <button id=${element.woeid} class="delete btn btn-danger">Delete</button>
+      </div>
       </div>
       `;
     }
