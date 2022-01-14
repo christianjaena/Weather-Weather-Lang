@@ -91,7 +91,8 @@ function setListener(attr) {
   });
 }
 async function getCityInfo(cities) {
-  let resultHTML = '<h1>Search Result(s)</h1>';
+  let resultHTML = '<h1>Search Result(s)</h1> <div id="resultsContainer">';
+  
   for (let index = 0; index < cities.length; index++) {
     let woeid = cities[index].woeid;
     let res = await postHTTPRequest(
@@ -100,13 +101,16 @@ async function getCityInfo(cities) {
     );
     let data = res.first();
     resultHTML += `
+    <div class="cityInfoContainer">
       <h4>${data.title} ${data.location_type}</h4>
       <h5>${data.parent.title}</h5>
       <p>Timezone: ${data.timezone}</p>
       <p>Coordinates: ${data.latt_long}</p>
       <button id=${woeid} class="info btn btn-danger">Weather Details</button>
+    </div>
       `;
   }
+  resultHTML += '</div>'
   results.innerHTML = resultHTML;
   setListener('.info');
 }

@@ -1,256 +1,283 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family:'Roboto',Arial, sans-serif;
-    font-size: 12px;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12px;
+  word-wrap: normal;
 }
 
-.main-container{
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  height: 60px;
+  width: 100%;
+  background-color: #2081d2;
+  /* background: linear-gradient(#178bf8, #2081d2, #1a73ab, #145d8a); */
+  flex-direction: row;
+  padding: 2px 10px;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
+.cityInfoContainer {
+  background-color: #2081d2;
+  padding: 1em;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+#resultsContainer {
     display: flex;
-    flex-direction: column;
-}
-
-.navbar{
-    height: 60px;
-    width: 100%;
-    background-color:#2081d2;
-    /* background: linear-gradient(#178bf8, #2081d2, #1a73ab, #145d8a); */
-    flex-direction: row;
-    padding: 2px 10px;
-    justify-content: space-between;
-    justify-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
 }
 
-.logo{
-    width: 30px;
-    height: 30px;
-}
-
-#city-input-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center ;
-}
-
-#cityInput{
-    height: 30px;
-    width: 120px;
-    border-radius: 6px;
-}
-
-#citySearchButton{
-    margin-left: 3px;
-    border-radius: 6px;
-    height: 30px;
-    width: 30px;
-    border: 0px;
-    background-color: #ffffff;
-    box-shadow: 1px 1px 3px 0px #5e5b5b;
-    transition: all 0.5s;
-}
-
-#citySearchButton:hover{
-    background-color: #2081d2;
-}
-
-#search-icon{
-    align-self: center;
-    color:#2081d2;
-    height: 15px;
-    width: 15px;
-}
-
-#search-icon:hover{
-    color:#ffffff;
-}
-
-.user-nav{
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
-    align-items: center;
-    justify-content: space-around;
-    width: 140px;
-}
-
-.user-nav #username{
+.cityInfoContainer h4 h5 {
     color: white;
-    font-size: 9px;
-    font-weight: bold;
 }
 
+#city-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#cityInput {
+  height: 30px;
+  width: 120px;
+  border-radius: 6px;
+}
+
+#citySearchButton {
+  margin-left: 3px;
+  border-radius: 6px;
+  height: 30px;
+  width: 30px;
+  border: 0px;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 3px 0px #5e5b5b;
+  transition: all 0.5s;
+}
+
+#citySearchButton:hover {
+  background-color: #2081d2;
+}
+
+#search-icon {
+  align-self: center;
+  color: #2081d2;
+  height: 15px;
+  width: 15px;
+}
+
+#search-icon:hover {
+  color: #ffffff;
+}
+
+.user-nav {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-around;
+  width: 140px;
+}
+
+.user-nav #username {
+  color: white;
+  font-size: 9px;
+  font-weight: bold;
+}
 
 /* JS CSS */
-.userName a{
-    color: white;
-    font-family:'Roboto',Arial, sans-serif;
-    font-size: 9px;
-    font-weight: bold;
-    text-decoration: none;
+.userName a {
+  color: white;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-#logoutButton{
-    background-color: #ffffff;
-    color: #2081d2;
-    font-weight: bold;
-    font-size: 9px;
-    height: 20px;
-    width: 40px;
-    border-radius: 15px;
-    border: 0px;
-    padding: 2px;
-    cursor: pointer;
-    box-shadow: 2px 1px 4px 0px #5e5b5b;
-    transition: all 0.5s;
+#logoutButton {
+  background-color: #ffffff;
+  color: #2081d2;
+  font-weight: bold;
+  font-size: 9px;
+  height: 20px;
+  width: 40px;
+  border-radius: 15px;
+  border: 0px;
+  padding: 2px;
+  cursor: pointer;
+  box-shadow: 2px 1px 4px 0px #5e5b5b;
+  transition: all 0.5s;
 }
 
 #logoutButton:hover {
-    background-color: #2081d2;
-    color: #ffffff;
+  background-color: #2081d2;
+  color: #ffffff;
 }
 
-.currentWeatherWrap{
-    margin: 10px 35px 0px 35px;
+.currentWeatherWrap {
+  margin: 10px 35px 0px 35px;
 }
 
 /* JS CSS */
-.currentWeather{
-    font-family:'Roboto',Arial, sans-serif;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    justify-items: center;
-    align-items: center;
-    font-size: 12px;
+.currentWeather {
+  font-family: 'Roboto', Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  font-size: 12px;
 }
 
-.currentWeather .box1 h4{
-    font-size: 20px;
-    font-weight: 700;
+.currentWeather .box1 h4 {
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.currentWeather .box2{
-    margin-top: -10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+.currentWeather .box2 {
+  margin-top: -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.currentWeather .box2 h3{
-    font-size: 15px;
-    font-weight: 600;
+.currentWeather .box2 h3 {
+  font-size: 15px;
+  font-weight: 600;
 }
-.currentWeather .box2 img{
-    margin-top: 3px;
-    width: 60px;
-    height: 60px;
+.currentWeather .box2 img {
+  margin-top: 3px;
+  width: 60px;
+  height: 60px;
 }
 /* End of JS CSS */
 
-
-.main-area{
-    margin: 15px 15px 0px 15px;
-    padding: 10px 5px;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
+.main-area {
+  margin: 15px 15px 0px 15px;
+  padding: 10px 5px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 }
 
-#results{
-    margin-top: 10px;
+#results {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-#current{
-    font-size: 30px;
+#current {
+  font-size: 30px;
 }
 
-.container1, .container2 {
-    width: 100%;
-    height: 200px;
-    background-color: #2081d2;
-    padding: 15px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    box-shadow: 4px 2px 1px 0px #bdbdbd;
+.container1,
+.container2 {
+  width: 100%;
+  height: 200px;
+  background-color: #2081d2;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 4px 2px 1px 0px #bdbdbd;
 }
 
-.container1{
-    padding-bottom: 10px;
+.container1 {
+  padding-bottom: 10px;
 }
 
-.container1 h3{
-    font-weight: bold;
-    color: white;
-    margin: 3px 0px 3px 15px;
+.container1 h3 {
+  font-weight: bold;
+  color: white;
+  margin: 3px 0px 3px 15px;
 }
 
-.container2 h3{
-    font-weight: bold;
-    color: white;
-    margin: 5px 0px 3px 15px;
+.container2 h3 {
+  font-weight: bold;
+  color: white;
+  margin: 5px 0px 3px 15px;
 }
 
-.iconify{
-    height: 80px;
-    width: 80px;
-    color: white;
+.iconify {
+  height: 80px;
+  width: 80px;
+  color: white;
 }
 
-.location-wrap, .coordinates-wrap {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding: 5px 5px;
+.location-wrap,
+.coordinates-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px 5px;
 }
 
-.city-button, .coordinate-button{
-    background-color: #ffffff;
-    color: #2081d2;
-    font-weight: bold;
-    height: 30px;
-    width: 200px;
-    border-radius: 20px;
-    border: 0px;
-    padding: 2px;
-    cursor: pointer;
-    box-shadow: 2px 1px 4px 0px #5e5b5b;
-    transition: all 0.5s;
+.city-button,
+.coordinate-button {
+  background-color: #ffffff;
+  color: #2081d2;
+  font-weight: bold;
+  height: 30px;
+  width: 200px;
+  border-radius: 20px;
+  border: 0px;
+  padding: 2px;
+  cursor: pointer;
+  box-shadow: 2px 1px 4px 0px #5e5b5b;
+  transition: all 0.5s;
 }
-
 
 /* JS CSS */
-.current-position{
-    font-family:'Roboto',Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: #ffffff;
+.current-position {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
 }
 
-.current-position-value{
-    font-size: 12px;
-    font-weight: 200;
-    color: #ffffff;
-    margin-left: 69px;
-    
+.current-position-value {
+  font-size: 12px;
+  font-weight: 200;
+  color: #ffffff;
+  margin-left: 69px;
 }
 
-.city-button{
-    margin-top: 15px;
+.city-button {
+  margin-top: 15px;
 }
 
-.coordinate-button{
-    margin-top: 10px;
+.coordinate-button {
+  margin-top: 10px;
 }
 
-.city-button:hover, .coordinate-button:hover{
-    background-color: #2081d2;
-    color: #ffffff;
+.city-button:hover,
+.coordinate-button:hover {
+  background-color: #2081d2;
+  color: #ffffff;
 }
-
 
 /* .container2 {
     width: 100%;
@@ -263,274 +290,265 @@
     box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
 } */
 
-
-#latitudeInput{
-    margin-bottom: 15px;
-    border-radius: 30px;
-    width: 100%;
+#latitudeInput {
+  margin-bottom: 15px;
+  border-radius: 30px;
+  width: 100%;
 }
 
-#longitudeInput{
-    margin-bottom: 8px;
-    border-radius: 30px;
-    width: 100%;
+#longitudeInput {
+  margin-bottom: 8px;
+  border-radius: 30px;
+  width: 100%;
 }
-
-
-
-
-
-
 
 /*	Small devices Tablets (≥768px) */
 @media only screen and (min-width: 768px) {
-    *{
-        font-size: 12px;
-    }
+  * {
+    font-size: 12px;
+  }
 
-    .navbar{
-        height: 60px;
-        width: 100%;
-        background-color:#2081d2;
-        /* background: linear-gradient(#178bf8, #2081d2, #1a73ab, #145d8a); */
-        flex-direction: row;
-        padding: 2px 10px;
-        justify-content: space-between;
-        justify-items: center;
-        align-items: center;
-    }
-    
-    .logo{
-        width: 60px;
-        height: 40px;
-    }
+  .navbar {
+    height: 60px;
+    width: 100%;
+    background-color: #2081d2;
+    /* background: linear-gradient(#178bf8, #2081d2, #1a73ab, #145d8a); */
+    flex-direction: row;
+    padding: 2px 10px;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+  }
 
-    #city-input-container{
-        display: flex;
-        flex-direction: row;
-        align-items: center ;
-    }
-    
-    #cityInput{
-        height: 30px;
-        width: 200px;
-        border-radius: 6px;
-    }
-    
-    #citySearchButton{
-        margin-left: 3px;
-        border-radius: 6px;
-        height: 30px;
-        width: 30px;
-        border: 0px;
-        background-color: #ffffff;
-        box-shadow: 1px 1px 3px 0px #5e5b5b;
-        transition: all 0.5s;
-    }
+  .logo {
+    width: 60px;
+    height: 40px;
+  }
 
-    #citySearchButton:hover{
-        background-color: #2081d2;
-    }
-    
-    #search-icon{
-        align-self: center;
-        color:#2081d2;
-        height: 15px;
-        width: 15px;
-    }
-    
-    #search-icon:hover{
-        color:#ffffff;
-    }
+  #city-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
-    .user-nav{
-        display: flex;
-        flex-direction: row;
-        justify-items: center;
-        align-items: center;
-        justify-content: space-around;
-        width: 140px;
-    }
-    
-    .user-nav #username{
-        color: white;
-        font-size: 12px;
-        font-weight: bold;
-    }
-    
-    
-    /* JS CSS */
-    .userName a{
-        color: white;
-        font-family:'Roboto',Arial, sans-serif;
-        font-size: 12px;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    
-    #logoutButton{
-        background-color: #ffffff;
-        color: #2081d2;
-        font-weight: bold;
-        height: 25px;
-        width: 55px;
-        border-radius: 15px;
-        border: 0px;
-        padding: 2px;
-        cursor: pointer;
-        box-shadow: 2px 1px 4px 0px #5e5b5b;
-        transition: all 0.5s;
-    }
-    
-    #logoutButton:hover {
-        background-color: #2081d2;
-        color: #ffffff;
-    }
-    
-    .currentWeatherWrap{
-        margin: 10px 35px 0px 35px;
-    }
-    
-    /* JS CSS */
-    .currentWeather{
-        font-family:'Roboto',Arial, sans-serif;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        justify-items: center;
-        align-items: center;
-        font-size: 12px;
-    }
-    
-    .currentWeather .box1 h4{
-        font-size: 20px;
-        font-weight: 700;
-    }
-    
-    .currentWeather .box2{
-        margin-top: -10px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-    
-    .currentWeather .box2 h3{
-        font-size: 15px;
-        font-weight: 600;
-    }
-    .currentWeather .box2 img{
-        margin-top: 3px;
-        width: 60px;
-        height: 60px;
-    }
-    /* End of JS CSS */
-    
-    
-    .main-area{
-        margin: 15px 15px 0px 15px;
-        padding: 10px 5px;
-        justify-content: space-between;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    #results{
-        margin-top: 10px;
-    }
-    
-    #current{
-        font-size: 30px;
-    }
-    
-    .container1, .container2 {
-        width: 100%;
-        height: 200px;
-        background-color: #2081d2;
-        padding: 15px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 20px;
-        margin-bottom: 20px;
-        box-shadow: 4px 2px 1px 0px #bdbdbd;
-    }
-    
-    .container1{
-        padding-bottom: 10px;
-    }
-    
-    .container1 h3{
-        font-weight: bold;
-        color: white;
-        margin: 3px 0px 3px 15px;
-    }
-    
-    .container2 h3{
-        font-weight: bold;
-        color: white;
-        margin: 5px 0px 3px 15px;
-    }
-    
-    .iconify{
-        height: 100px;
-        width: 100px;
-        color: white;
-    }
-    
-    .location-wrap, .coordinates-wrap {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        padding: 5px 5px;
-    }
-    
-  
-    
-    .city-button, .coordinate-button{
-        background-color: #ffffff;
-        color: #2081d2;
-        font-weight: bold;
-        height: 30px;
-        width: 200px;
-        border-radius: 20px;
-        border: 0px;
-        padding: 2px;
-        cursor: pointer;
-        box-shadow: 2px 1px 4px 0px #5e5b5b;
-        transition: all 0.5s;
-    }
-    
-    /* JS CSS */
-    .current-position{
-        font-family:'Roboto',Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 500;
-        color: #ffffff;
-    }
-    
-    .current-position-value{
-        font-size: 13px;
-        font-weight: 200;
-        color: #ffffff;
-        margin-left: 69px;
-        
-    }
-    
-    .city-button{
-        margin-top: 15px;
-    }
-    
-    .coordinate-button{
-        margin-top: 10px;
-    }
-    
-    .city-button:hover, .coordinate-button:hover{
-        background-color: #2081d2;
-        color: #ffffff;
-    }
-    
-    
-    /* .container2 {
+  #cityInput {
+    height: 30px;
+    width: 200px;
+    border-radius: 6px;
+  }
+
+  #citySearchButton {
+    margin-left: 3px;
+    border-radius: 6px;
+    height: 30px;
+    width: 30px;
+    border: 0px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 3px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
+
+  #citySearchButton:hover {
+    background-color: #2081d2;
+  }
+
+  #search-icon {
+    align-self: center;
+    color: #2081d2;
+    height: 15px;
+    width: 15px;
+  }
+
+  #search-icon:hover {
+    color: #ffffff;
+  }
+
+  .user-nav {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-around;
+    width: 140px;
+  }
+
+  .user-nav #username {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* JS CSS */
+  .userName a {
+    color: white;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  #logoutButton {
+    background-color: #ffffff;
+    color: #2081d2;
+    font-weight: bold;
+    height: 25px;
+    width: 55px;
+    border-radius: 15px;
+    border: 0px;
+    padding: 2px;
+    cursor: pointer;
+    box-shadow: 2px 1px 4px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
+
+  #logoutButton:hover {
+    background-color: #2081d2;
+    color: #ffffff;
+  }
+
+  .currentWeatherWrap {
+    margin: 10px 35px 0px 35px;
+  }
+
+  /* JS CSS */
+  .currentWeather {
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .currentWeather .box1 h4 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .currentWeather .box2 {
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .currentWeather .box2 h3 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .currentWeather .box2 img {
+    margin-top: 3px;
+    width: 60px;
+    height: 60px;
+  }
+  /* End of JS CSS */
+
+  .main-area {
+    margin: 15px 15px 0px 15px;
+    padding: 10px 5px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #results {
+    margin-top: 10px;
+  }
+
+  #current {
+    font-size: 30px;
+  }
+
+  .container1,
+  .container2 {
+    width: 100%;
+    height: 200px;
+    background-color: #2081d2;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 4px 2px 1px 0px #bdbdbd;
+  }
+
+  .container1 {
+    padding-bottom: 10px;
+  }
+
+  .container1 h3 {
+    font-weight: bold;
+    color: white;
+    margin: 3px 0px 3px 15px;
+  }
+
+  .container2 h3 {
+    font-weight: bold;
+    color: white;
+    margin: 5px 0px 3px 15px;
+  }
+
+  .iconify {
+    height: 100px;
+    width: 100px;
+    color: white;
+  }
+
+  .location-wrap,
+  .coordinates-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px 5px;
+  }
+
+  .city-button,
+  .coordinate-button {
+    background-color: #ffffff;
+    color: #2081d2;
+    font-weight: bold;
+    height: 30px;
+    width: 200px;
+    border-radius: 20px;
+    border: 0px;
+    padding: 2px;
+    cursor: pointer;
+    box-shadow: 2px 1px 4px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
+
+  /* JS CSS */
+  .current-position {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+  .current-position-value {
+    font-size: 13px;
+    font-weight: 200;
+    color: #ffffff;
+    margin-left: 69px;
+  }
+
+  .city-button {
+    margin-top: 15px;
+  }
+
+  .coordinate-button {
+    margin-top: 10px;
+  }
+
+  .city-button:hover,
+  .coordinate-button:hover {
+    background-color: #2081d2;
+    color: #ffffff;
+  }
+
+  /* .container2 {
         width: 100%;
         height: 250px;
         background-color: mediumorchid;
@@ -540,280 +558,267 @@
         border-radius: 30px;
         box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
     } */
-    
-    
-    #latitudeInput{
-        margin-bottom: 15px;
-        border-radius: 30px;
-        width: 100%;
-    }
-    
-    #longitudeInput{
-        margin-bottom: 8px;
-        border-radius: 30px;
-        width: 100%;
-    }
-    
-    
-    
-    
-}	
 
+  #latitudeInput {
+    margin-bottom: 15px;
+    border-radius: 30px;
+    width: 100%;
+  }
 
-
-
+  #longitudeInput {
+    margin-bottom: 8px;
+    border-radius: 30px;
+    width: 100%;
+  }
+}
 
 /* Medium devices Desktops (≥992px) */
 @media only screen and (min-width: 992px) {
-    *{
-        font-size: 14px;
-    }
+  * {
+    font-size: 14px;
+  }
 
-    .navbar{
-        height: 80px;
-        width: 100%;
-        background-color:#2081d2;
-        /* background: linear-gradient(#178bf8, #2081d2, #1a73ab, #145d8a); */
-        flex-direction: row;
-        padding: 5px 20px;
-        justify-content: space-between;
-        justify-items: center;
-        align-items: center;
-    }
-        
-    .logo{
-        width: 90px;
-        height: 60px;
-    }
+  .navbar {
+    height: 80px;
+    width: 100%;
+    background-color: #2081d2;
+    /* background: linear-gradient(#178bf8, #2081d2, #1a73ab, #145d8a); */
+    flex-direction: row;
+    padding: 5px 20px;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+  }
 
-    #city-input-container{
-        display: flex;
-        flex-direction: row;
-        align-items: center ;
-    }
-    
-    #cityInput{
-        height: 35px;
-        width: 280px;
-        border-radius: 6px;
-    }
-    
-    #citySearchButton{
-        margin-left: 3px;
-        border-radius: 6px;
-        height: 34px;
-        width: 35px;
-        border: 0px;
-        background-color: #ffffff;
-        box-shadow: 1px 1px 3px 0px #5e5b5b;
-        transition: all 0.5s;
-    }
+  .logo {
+    width: 90px;
+    height: 60px;
+  }
 
-    #citySearchButton:hover{
-        background-color: #2081d2;
-    }
-    
-    
-    #search-icon{
-        align-self: center;
-        color:#2081d2;
-        height: 24px;
-        width: 24px;
-    }
-    
-    #search-icon:hover{
-        color:#ffffff;
-    }
+  #city-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
-    .user-nav{
-        display: flex;
-        flex-direction: row;
-        justify-items: center;
-        align-items: center;
-        justify-content: space-around;
-        width: 190px;
-    }
+  #cityInput {
+    height: 35px;
+    width: 280px;
+    border-radius: 6px;
+  }
 
-    .user-nav #username{
-        color: white;
-        font-size: 14px;
-        font-weight: bold;
-    }
-    
+  #citySearchButton {
+    margin-left: 3px;
+    border-radius: 6px;
+    height: 34px;
+    width: 35px;
+    border: 0px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 3px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
 
-    /* JS CSS */
-    .userName a{
-        color: white;
-        font-family:'Roboto',Arial, sans-serif;
-        font-size: 14px;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    
-    #logoutButton{
-        background-color: #ffffff;
-        color: #2081d2;
-        font-weight: bold;
-        height: 28px;
-        width: 70px;
-        border-radius: 15px;
-        border: 0px;
-        padding: 2px;
-        cursor: pointer;
-        box-shadow: 2px 1px 4px 0px #5e5b5b;
-        transition: all 0.5s;
-    }
+  #citySearchButton:hover {
+    background-color: #2081d2;
+  }
 
-    #logoutButton:hover {
-        background-color: #2081d2;
-        color: #ffffff;
-    }
+  #search-icon {
+    align-self: center;
+    color: #2081d2;
+    height: 24px;
+    width: 24px;
+  }
 
-    .currentWeatherWrap{
-        margin: 15px 50px 0px 50px;
-    }
-    
-    /* JS CSS */
-    .currentWeather{
-        font-family:'Roboto',Arial, sans-serif;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        justify-items: center;
-        align-items: center;
-        font-size: 15px;
-    }
+  #search-icon:hover {
+    color: #ffffff;
+  }
 
-    .currentWeather .box1 h4{
-        font-size: 26px;
-        font-weight: 800;
-    }
+  .user-nav {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-around;
+    width: 190px;
+  }
 
+  .user-nav #username {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+  }
 
-    .currentWeather .box2{
-        margin-top: -10px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
+  /* JS CSS */
+  .userName a {
+    color: white;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+  }
 
-    .currentWeather .box2 h3{
-        font-size: 18px;
-        font-weight: 600;
-    }
-    .currentWeather .box2 img{
-        margin-top: 6px;
-        width: 90px;
-        height: 90px;
-    }
-    /* End of JS CSS */
+  #logoutButton {
+    background-color: #ffffff;
+    color: #2081d2;
+    font-weight: bold;
+    height: 28px;
+    width: 70px;
+    border-radius: 15px;
+    border: 0px;
+    padding: 2px;
+    cursor: pointer;
+    box-shadow: 2px 1px 4px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
 
+  #logoutButton:hover {
+    background-color: #2081d2;
+    color: #ffffff;
+  }
 
-    .main-area{
-        margin: 24px 0px 0px 24px;
-        padding: 15px 8px;
-        justify-content: space-between;
-        display: flex;
-        flex-direction: row;
-    }
+  .currentWeatherWrap {
+    margin: 15px 50px 0px 50px;
+  }
 
-    #results{
-        margin-top: 20px;
-    }
-    
-    #current{
-        font-size: 40px;
-    }
-    
-    .container1, .container2 {
-        width: 100%;
-        height: 250px;
-        background-color: #2081d2;
-        padding: 15px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 20px;
-        margin-right: 20px;
-        box-shadow: 6px 4px 2px 1px #bdbdbd;
-    }
-    
-    .container1{
-        padding-bottom: 10px;
-    }
+  /* JS CSS */
+  .currentWeather {
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    font-size: 15px;
+  }
 
-    .container1 h3{
-        font-weight: bold;
-        color: white;
-        margin: 4px 0px 4px 24px;
-    }
-    
-    .container2 h3{
-        font-weight: bold;
-        color: white;
-        margin: 5px 0px 3px 30px;
-    }
+  .currentWeather .box1 h4 {
+    font-size: 26px;
+    font-weight: 800;
+  }
 
-    .iconify{
-        height: 130px;
-        width: 130px;
-        color: white;
-    }
-    
-    .location-wrap, .coordinates-wrap {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        padding: 8px 8px;
-    }
-    
+  .currentWeather .box2 {
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 
+  .currentWeather .box2 h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .currentWeather .box2 img {
+    margin-top: 6px;
+    width: 90px;
+    height: 90px;
+  }
+  /* End of JS CSS */
 
-    .city-button, .coordinate-button{
-        background-color: #ffffff;
-        color: #2081d2;
-        font-weight: bold;
-        height: 35px;
-        width: 230px;
-        border-radius: 20px;
-        border: 0px;
-        padding: 2px;
-        cursor: pointer;
-        box-shadow: 2px 1px 4px 0px #5e5b5b;
-        transition: all 0.5s;
-    }
+  .main-area {
+    margin: 24px 0px 0px 24px;
+    padding: 15px 8px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+  }
 
-    /* JS CSS */
-    .current-position{
-        font-family:'Roboto',Arial, sans-serif;
-        font-size: 17px;
-        font-weight: 600;
-        color: #ffffff;
-    }
+  #results {
+    margin-top: 20px;
+  }
 
-    .current-position-value{
-        font-size: 14px;
-        font-weight: 300;
-        color: #ffffff;
-        margin-left: 69px;
-        
-    }
-    
-    .city-button{
-        margin-top: 15px;
-    }
+  #current {
+    font-size: 40px;
+  }
 
-    .coordinate-button{
-        margin-top: 10px;
-    }
-    
-    .city-button:hover, .coordinate-button:hover{
-        background-color: #2081d2;
-        color: #ffffff;
-    }
-    
-    
-    /* .container2 {
+  .container1,
+  .container2 {
+    width: 100%;
+    height: 250px;
+    background-color: #2081d2;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 20px;
+    box-shadow: 6px 4px 2px 1px #bdbdbd;
+  }
+
+  .container1 {
+    padding-bottom: 10px;
+  }
+
+  .container1 h3 {
+    font-weight: bold;
+    color: white;
+    margin: 4px 0px 4px 24px;
+  }
+
+  .container2 h3 {
+    font-weight: bold;
+    color: white;
+    margin: 5px 0px 3px 30px;
+  }
+
+  .iconify {
+    height: 130px;
+    width: 130px;
+    color: white;
+  }
+
+  .location-wrap,
+  .coordinates-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 8px;
+  }
+
+  .city-button,
+  .coordinate-button {
+    background-color: #ffffff;
+    color: #2081d2;
+    font-weight: bold;
+    height: 35px;
+    width: 230px;
+    border-radius: 20px;
+    border: 0px;
+    padding: 2px;
+    cursor: pointer;
+    box-shadow: 2px 1px 4px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
+
+  /* JS CSS */
+  .current-position {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .current-position-value {
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffffff;
+    margin-left: 69px;
+  }
+
+  .city-button {
+    margin-top: 15px;
+  }
+
+  .coordinate-button {
+    margin-top: 10px;
+  }
+
+  .city-button:hover,
+  .coordinate-button:hover {
+    background-color: #2081d2;
+    color: #ffffff;
+  }
+
+  /* .container2 {
         width: 100%;
         height: 250px;
         background-color: mediumorchid;
@@ -823,276 +828,263 @@
         border-radius: 30px;
         box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
     } */
-    
-    
-    
-    #latitudeInput{
-        margin-bottom: 18px;
-        border-radius: 30px;
-        width: 100%;
-    }
-    
-    #longitudeInput{
-        margin-bottom: 9px;
-        border-radius: 30px;
-        width: 100%;
-    }
 
+  #latitudeInput {
+    margin-bottom: 18px;
+    border-radius: 30px;
+    width: 100%;
+  }
+
+  #longitudeInput {
+    margin-bottom: 9px;
+    border-radius: 30px;
+    width: 100%;
+  }
 }
 
-
-
-
-
-
-
 /* Large devices Desktops (≥1200px) */
-@media only screen and (min-width: 1200px) {    
-        *{
-            font-size: 16px;
-        }
+@media only screen and (min-width: 1200px) {
+  * {
+    font-size: 16px;
+  }
 
+  .navbar {
+    height: 100px;
+    width: 100%;
+    background-color: #2081d2;
+    /* background: linear-gradient(#178bf8, #2081d2, #1a73ab, #145d8a); */
+    flex-direction: row;
+    padding: 10px 30px;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+  }
 
-        .navbar{
-            height: 100px;
-            width: 100%;
-            background-color:#2081d2;
-            /* background: linear-gradient(#178bf8, #2081d2, #1a73ab, #145d8a); */
-            flex-direction: row;
-            padding: 10px 30px;
-            justify-content: space-between;
-            justify-items: center;
-            align-items: center;
-        }
+  .logo {
+    width: 120px;
+    height: 75px;
+  }
 
-        .logo{
-            width: 120px;
-            height: 75px;
-        }
-        
-        
-        #city-input-container{
-            display: flex;
-            flex-direction: row;
-            align-items: center ;
-        }
-        
-        #cityInput{
-            height: 40px;
-            width: 360px;
-            border-radius: 6px;
-        }
-        
-        #citySearchButton{
-            margin-left: 3px;
-            border-radius: 6px;
-            height: 38px;
-            width: 40px;
-            border: 0px;
-            background-color: #ffffff;
-            box-shadow: 1px 1px 3px 0px #5e5b5b;
-            transition: all 0.5s;
-        }
+  #city-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
-        #citySearchButton:hover{
-            background-color: #2081d2;
-        }
-        
-        
-        #search-icon{
-            align-self: center;
-            color:#2081d2;
-            height: 30px;
-            width: 30px;
-        }
-        
-        #search-icon:hover{
-            color:#ffffff;
-        }
-        
-        
-        .user-nav{
-            display: flex;
-            flex-direction: row;
-            justify-items: center;
-            align-items: center;
-            justify-content: space-around;
-            width: 240px;
-        }
+  #cityInput {
+    height: 40px;
+    width: 360px;
+    border-radius: 6px;
+  }
 
-        .user-nav #username{
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        
+  #citySearchButton {
+    margin-left: 3px;
+    border-radius: 6px;
+    height: 38px;
+    width: 40px;
+    border: 0px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 3px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
 
-        /* JS CSS */
-        .userName a{
-            color: white;
-            font-family:'Roboto',Arial, sans-serif;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        #logoutButton{
-            background-color: #ffffff;
-            color: #2081d2;
-            font-weight: bold;
-            height: 30px;
-            width: 80px;
-            border-radius: 15px;
-            border: 0px;
-            padding: 2px;
-            cursor: pointer;
-            box-shadow: 2px 1px 4px 0px #5e5b5b;
-            transition: all 0.5s;
-        }
+  #citySearchButton:hover {
+    background-color: #2081d2;
+  }
 
-        #logoutButton:hover {
-            background-color: #2081d2;
-            color: #ffffff;
-        }
+  #search-icon {
+    align-self: center;
+    color: #2081d2;
+    height: 30px;
+    width: 30px;
+  }
 
-        .currentWeatherWrap{
-            margin: 20px 70px 0px 70px;
-        }
-        
-        /* JS CSS */
-        .currentWeather{
-            font-family:'Roboto',Arial, sans-serif;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            justify-items: center;
-            align-items: center;
-            font-size: 18px;
-        }
+  #search-icon:hover {
+    color: #ffffff;
+  }
 
-        .currentWeather .box1 h4{
-            font-size: 33px;
-            font-weight: 800;
-        }
+  .user-nav {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-around;
+    width: 240px;
+  }
 
+  .user-nav #username {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
 
-        .currentWeather .box2{
-            margin-top: -20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
+  /* JS CSS */
+  .userName a {
+    color: white;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+  }
 
-        .currentWeather .box2 h3{
-            font-size: 20px;
-            font-weight: 600;
-        }
-        .currentWeather .box2 img{
-            margin-top: 6px;
-            width: 120px;
-            height: 120px;
-        }
-        /* End of JS CSS */
+  #logoutButton {
+    background-color: #ffffff;
+    color: #2081d2;
+    font-weight: bold;
+    height: 30px;
+    width: 80px;
+    border-radius: 15px;
+    border: 0px;
+    padding: 2px;
+    cursor: pointer;
+    box-shadow: 2px 1px 4px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
 
-        .main-area{
-            margin: 30px 0px 0px 30px;
-            padding: 20px 10px;
-            justify-content: space-between;
-            display: flex;
-            flex-direction: row;
-        }
+  #logoutButton:hover {
+    background-color: #2081d2;
+    color: #ffffff;
+  }
 
-        #results{
-            margin-top: 30px;
-        }
-        
-        #current{
-            font-size: 50px;
-        }
-        
-        .container1, .container2 {
-            width: 100%;
-            height: 269px;
-            background-color: #2081d2;
-            padding: 15px;
-            justify-content: center;
-            align-items: center;
-            border-radius: 20px;
-            margin-right: 40px;
-            box-shadow: 6px 4px 2px 1px #bdbdbd;
-        }
-        
-        .container1 h3{
-            font-weight: bold;
-            color: white;
-            margin: 5px 0px 3px 30px;
-        }
-        
-        .container2 h3{
-            font-weight: bold;
-            color: white;
-            margin: 5px 0px 3px 30px;
-        }
+  .currentWeatherWrap {
+    margin: 20px 70px 0px 70px;
+  }
 
-        .iconify{
-            height: 160px;
-            width: 160px;
-            color: white;
-        }
-        
-        .location-wrap, .coordinates-wrap {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-around;
-            padding: 10px 10px;
-        }
-        
-        .city-button, .coordinate-button{
-            background-color: #ffffff;
-            color: #2081d2;
-            font-weight: bold;
-            height: 40px;
-            width: 250px;
-            border-radius: 20px;
-            border: 0px;
-            padding: 2px;
-            cursor: pointer;
-            box-shadow: 2px 1px 4px 0px #5e5b5b;
-            transition: all 0.5s;
-        }
+  /* JS CSS */
+  .currentWeather {
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    font-size: 18px;
+  }
 
-        /* JS CSS */
-        .current-position{
-            font-family:'Roboto',Arial, sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: #ffffff;
-        }
+  .currentWeather .box1 h4 {
+    font-size: 33px;
+    font-weight: 800;
+  }
 
-        .current-position-value{
-            font-size: 16px;
-            font-weight: 300;
-            color: #ffffff;
-            margin-left: 69px;
-            
-        }
-        
-        .city-button{
-            margin-top: 18px;
-        }
+  .currentWeather .box2 {
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 
-        .coordinate-button{
-            margin-top: 10px;
-        }
-        
-        .city-button:hover, .coordinate-button:hover{
-            background-color: #2081d2;
-            color: #ffffff;
-        }
-        
-        
-        /* .container2 {
+  .currentWeather .box2 h3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .currentWeather .box2 img {
+    margin-top: 6px;
+    width: 120px;
+    height: 120px;
+  }
+  /* End of JS CSS */
+
+  .main-area {
+    margin: 30px 0px 0px 30px;
+    padding: 20px 10px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #results {
+    margin-top: 30px;
+  }
+
+  #current {
+    font-size: 50px;
+  }
+
+  .container1,
+  .container2 {
+    width: 100%;
+    height: 269px;
+    background-color: #2081d2;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 40px;
+    box-shadow: 6px 4px 2px 1px #bdbdbd;
+  }
+
+  .container1 h3 {
+    font-weight: bold;
+    color: white;
+    margin: 5px 0px 3px 30px;
+  }
+
+  .container2 h3 {
+    font-weight: bold;
+    color: white;
+    margin: 5px 0px 3px 30px;
+  }
+
+  .iconify {
+    height: 160px;
+    width: 160px;
+    color: white;
+  }
+
+  .location-wrap,
+  .coordinates-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 10px;
+  }
+
+  .city-button,
+  .coordinate-button {
+    background-color: #ffffff;
+    color: #2081d2;
+    font-weight: bold;
+    height: 40px;
+    width: 250px;
+    border-radius: 20px;
+    border: 0px;
+    padding: 2px;
+    cursor: pointer;
+    box-shadow: 2px 1px 4px 0px #5e5b5b;
+    transition: all 0.5s;
+  }
+
+  /* JS CSS */
+  .current-position {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .current-position-value {
+    font-size: 16px;
+    font-weight: 300;
+    color: #ffffff;
+    margin-left: 69px;
+  }
+
+  .city-button {
+    margin-top: 18px;
+  }
+
+  .coordinate-button {
+    margin-top: 10px;
+  }
+
+  .city-button:hover,
+  .coordinate-button:hover {
+    background-color: #2081d2;
+    color: #ffffff;
+  }
+
+  /* .container2 {
             width: 100%;
             height: 250px;
             background-color: mediumorchid;
@@ -1102,20 +1094,16 @@
             border-radius: 30px;
             box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
         } */
-        
-        
-        
-        #latitudeInput{
-            margin-bottom: 20px;
-            border-radius: 30px;
-            width: 100%;
-        }
-        
-        #longitudeInput{
-            margin-bottom: 10px;
-            border-radius: 30px;
-            width: 100%;
-        }
-        
-    }
 
+  #latitudeInput {
+    margin-bottom: 20px;
+    border-radius: 30px;
+    width: 100%;
+  }
+
+  #longitudeInput {
+    margin-bottom: 10px;
+    border-radius: 30px;
+    width: 100%;
+  }
+}

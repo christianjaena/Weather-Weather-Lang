@@ -28,10 +28,10 @@ async function getUserDetails() {
     ${user.createdAt.split('T').first()}
   </h3>
   `;
-  favoritesDiv.innerHTML = '<h4>Fetching Favorites ...</h4>';
+  favoritesDiv.innerHTML = '<h3>Fetching Favorites ...</h3>';
   let favoritesHTML = '';
   if (favorites.length === 0) {
-    favoritesDiv.innerHTML = '<h4>Nothing is added to favorites yet.</h4>';
+    favoritesDiv.innerHTML = '<h3>Nothing is added to favorites yet.</h3>';
   } else {
     for (let index = 0; index < favorites.length; index++) {
       let element = favorites[index];

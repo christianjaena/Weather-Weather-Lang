@@ -6,6 +6,7 @@ p {
 h3 {
   color: #212529;
   text-align: center;
+  word-break: break-all;
 }
 #navbar {
   background-color: #2081d2;
@@ -62,10 +63,10 @@ h3 {
 
 #userInfoContainer {
   background-color: #2081d2;
-  border-radius: 1em;
-  padding: 1em;
-  margin: 1em;
+  border-radius: 20px;
+  margin: 2.5em;
   color: white;
+  padding: 2.5em 3em 2.5em 3em;
 }
 
 #updateButton {
@@ -76,6 +77,10 @@ h3 {
 #favorites {
   color: white;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .favoriteContainer {
@@ -87,6 +92,7 @@ h3 {
 
 #emailContainer {
   text-align: center;
+  margin: 1em;
 }
 
 #deleteFavorite {

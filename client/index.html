@@ -90,82 +90,90 @@
     />
     <link rel="stylesheet" href="home_styles.css" />
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
-
   </head>
 
   <body>
     <div class="main-container">
       <div class="navbar">
-        <img class="logo" src="./assets/WWL Logo Mk II (with text2).png" alt="WWL Logo"/>
+        <img
+          class="logo"
+          src="./assets/WWL Logo Mk II (with text2).png"
+          alt="WWL Logo"
+        />
 
         <div class="citysearch">
-            <div class="form-group" id="city-input-container">
-              <input class="form-control" id="cityInput" type="text" placeholder="Search City"/>
-                <button id="citySearchButton">
-                  <span class="iconify" id="search-icon" data-icon="fe:search"></span>
-                </button>
-            </div>
-            
-      </div>
-      <div class="user-nav">
-          <div id="username">Hello!  </div>
-          <button class="btn btn-danger" id="logoutButton">
-             Log Out
-          </button>
+          <div class="form-group" id="city-input-container">
+            <input
+              class="form-control"
+              id="cityInput"
+              type="text"
+              placeholder="Search City"
+            />
+            <button id="citySearchButton">
+              <span
+                class="iconify"
+                id="search-icon"
+                data-icon="fe:search"
+              ></span>
+            </button>
+          </div>
         </div>
+        <div class="user-nav">
+          <div id="username">Hello!</div>
+          <button class="btn btn-danger" id="logoutButton">Log Out</button>
+        </div>
+      </div>
 
-    </div>
+      <div class="currentWeatherWrap">
+        <!-- INSERT HUGE BACKGROUND IMAGE HERE -->
+        <img src="" alt="" />
+        <div id="current"></div>
+      </div>
 
-    <div id="results"></div>
-
-    <div class="currentWeatherWrap">
-      <!-- INSERT HUGE BACKGROUND IMAGE HERE -->
-      <img src="" alt="">
-      <div id="current"></div>
-    </div>
-
-  
-    
-    <div class="main-area">
-   
-      <div class="container1"> 
-          <h3>Current Location</h3> 
+      <div class="main-area">
+        <div class="container1">
+          <h3>Current Location</h3>
           <div class="location-wrap">
-              <span class="iconify" data-icon="ep:map-location"></span>
-              <div class="wrap-info">
-                <div id="location"></div>
-                <button class="city-button" id="citiesNearMyCoordinatesButton">
-                   Scan Cities Near Me
-              </button>
-          </div>
-        </div>
-      </div>
-    
-
-    <div class="container2">
-        <div class="form-group">
-            <h3>Coordinates</h3>
-          <div class="coordinates-wrap">
-            <span class="iconify" data-icon="ep:coordinate"></span>
-            
+            <span class="iconify" data-icon="ep:map-location"></span>
             <div class="wrap-info">
-                <input class="form-control" id="latitudeInput"  type="number"  placeholder="Latitude" />
-                <input class="form-control" id="longitudeInput" type="number"  placeholder="Longitude" />
-                <button class="coordinate-button" id="coordinatesSearchButton">  Search Coordinates </button>
+              <div id="location"></div>
+              <button class="city-button" id="citiesNearMyCoordinatesButton">
+                Scan Cities Near Me
+              </button>
             </div>
           </div>
         </div>
+
+        <div class="container2">
+          <div class="form-group">
+            <h3>Coordinates</h3>
+            <div class="coordinates-wrap">
+              <span class="iconify" data-icon="ep:coordinate"></span>
+
+              <div class="wrap-info">
+                <input
+                  class="form-control"
+                  id="latitudeInput"
+                  type="number"
+                  placeholder="Latitude"
+                />
+                <input
+                  class="form-control"
+                  id="longitudeInput"
+                  type="number"
+                  placeholder="Longitude"
+                />
+                <button class="coordinate-button" id="coordinatesSearchButton">
+                  Search Coordinates
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="results">
+      </div>
     </div>
-
-
-  </div>
-
-  
-  </div>
-
-   
-
-    
 
     <!-- Import this to use Linq.js -->
     <script src="./libraries/linq.min.js"></script>
