@@ -49,24 +49,33 @@ backButton.addEventListener('click', () => {
     .first();
   weatherInfo.forEach((day) => {
     results.innerHTML += `
-    <span>
-      <p><strong>Date: ${day.applicable_date}</strong></p>
-      <p>Weather Condition: ${day.weather_state_name}</p>
-      <img src="https://www.metaweather.com/static/img/weather/${
-        day.weather_state_abbr
-      }.svg" height="100" width="100"/>
-      <p>Predictability: ${day.predictability}%</p>
-      <p>Humidity: ${day.humidity}%</p>
-      <p>Average Temperature: ${day.the_temp.toFixed(2)} Celsius</p>
-      <p>Maximum Temperature: ${day.max_temp.toFixed(2)} Celsius</p>
-      <p>Minimum Temperature: ${day.min_temp.toFixed(2)} Celsius</p>
-      <p>Wind Speed: ${day.wind_speed.toFixed(2)} Miles per Hour</p>
-      <p>Wind Direction: ${day.wind_direction.toFixed(2)} ${
-      day.wind_direction_compass
-    }</p>
-      <p>Air Pressure: ${day.air_pressure} Millibars</p>
-      <p>Visibility: ${day.visibility.toFixed(2)} Miles</p>
-    </span>
-  `;
+ 
+    <div class="main">
+      <div class="container3"> 
+          <h1 > ${day.applicable_date}</h1><br />
+          
+          Weather Condition: ${day.weather_state_name}
+
+          <img src="https://www.metaweather.com/static/img/weather/${
+              day.weather_state_abbr
+            }.svg" height="100" width="100"/> <br /> <br />
+            
+            Predictability:${day.predictability}<br />
+            Humidity:${day.humidity}<br />
+            Avg Temperature: ${day.the_temp.toFixed(2)}<br />
+            Max Temperature: ${day.max_temp.toFixed(2)}<br />
+            MinTemperature: ${day.min_temp.toFixed(2)}<br />
+            Wind Speed:  ${day.wind_speed.toFixed(2)}<br />
+
+            Wind Direction: ${day.wind_direction.toFixed(2)} ${
+              day.wind_direction_compass
+            }<br />
+            
+            Air Pressure:${day.air_pressure} <br />
+            Visibility: ${day.visibility.toFixed(2)}
+            </div>
+        </div>  
+ 
+    `;
   });
 })();
