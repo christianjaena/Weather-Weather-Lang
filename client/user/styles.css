@@ -74,12 +74,15 @@ h3 {
 }
 
 #favorites {
+  color: white;
+  text-align: center;
+}
+
+.favoriteContainer {
   background-color: #2081d2;
   border-radius: 1em;
   padding: 1em;
   margin: 1em;
-  color: white;
-  text-align: center;
 }
 
 #emailContainer {
