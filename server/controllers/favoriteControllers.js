@@ -7,7 +7,7 @@ const addToFavoritesController = async (req, res) => {
   let favoriteExists = [favorite];
   // LINQ - arr.first();
   if (favoriteExists.first()) {
-    res.status(400).json([{ message: 'Already in favorites!' }]);
+    res.status(400).json([{ message: 'Kasalukuyang nasa Paborito na.' }]);
   } else {
     favorite = new FavoriteModel({
       woeid,
@@ -20,7 +20,7 @@ const addToFavoritesController = async (req, res) => {
       .then(() =>
         res.status(200).json([
           {
-            message: 'Added to favorites!',
+            message: 'Nadagdag sa mga Paborito!',
           },
         ])
       )

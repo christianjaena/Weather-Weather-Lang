@@ -9,7 +9,7 @@ const registerUserController = async (req, res) => {
   let userExists = [user];
   // LINQ - arr.first();
   if (userExists.first()) {
-    res.status(400).json([{ message: 'User with this email already exists' }]);
+    res.status(400).json([{ message: 'Mayroon nang user may ganitong email' }]);
   } else {
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -24,7 +24,7 @@ const registerUserController = async (req, res) => {
       .then(() =>
         res.status(200).json([
           {
-            message: 'Registered successfuly',
+            message: 'Matagumpay na nakarehistro',
             redirectURL: 'http://localhost:3000/login',
           },
         ])
@@ -41,7 +41,7 @@ const loginUserController = async (req, res) => {
   if (!userExists.first()) {
     res.status(400).json([
       {
-        message: 'No such user found',
+        message: 'Walang nakitang ganoong user',
       },
     ]);
   } else {
@@ -56,7 +56,7 @@ const loginUserController = async (req, res) => {
       req.session.isAuth = true;
       res.status(200).json([
         {
-          message: 'Log in successful',
+          message: 'Matagumpay na naka-log in',
           userID: user._id,
           username: user.username,
           email: user.email,

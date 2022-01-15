@@ -28,10 +28,10 @@ async function getUserDetails() {
     ${user.createdAt.split('T').first()}
   </h3>
   `;
-  favoritesDiv.innerHTML = '<h3>Fetching Favorites ...</h3>';
+  favoritesDiv.innerHTML = '<h3>Naglo-load ng mga Paborito ...</h3>';
   let favoritesHTML = '';
   if (favorites.length === 0) {
-    favoritesDiv.innerHTML = '<h3>Nothing is added to favorites yet.</h3>';
+    favoritesDiv.innerHTML = '<h3>Wala pang nadagdag sa mga Paborito.</h3>';
   } else {
     for (let index = 0; index < favorites.length; index++) {
       let element = favorites[index];
@@ -46,11 +46,11 @@ async function getUserDetails() {
       <h4>${data.title} ${data.location_type}</h4>
       <h5>${data.parent.title}</h5>
       <p>Timezone: ${data.timezone}</p>
-      <p>Coordinates: ${data.latt_long}</p>
-      <p>Weather Condition: ${day.weather_state_name}</p>
+      <p>Mga Coordinate: ${data.latt_long}</p>
+      <p>Kondisyon ng Panahon: ${day.weather_state_name}</p>
       <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
       <div id="deleteFavorite">
-        <button id=${element.woeid} class="delete btn btn-danger">Delete</button>
+        <button id=${element.woeid} class="delete btn btn-danger">Tanggalin</button>
       </div>
       </div>
       `;
@@ -76,7 +76,7 @@ function setDeleteListener() {
 
 updateButton.addEventListener('click', async () => {
   if (user.username === username.value) {
-    alert('Username has not been changed');
+    alert('Hindi pa nababago ang username');
   } else {
     let request = await fetch(`http://localhost:3000/user/${userID}`, {
       method: 'PUT',
@@ -84,7 +84,7 @@ updateButton.addEventListener('click', async () => {
       body: JSON.stringify({ username: username.value }),
     });
     let result = await request.json();
-    alert('Username updated!');
+    alert('Bagong username na!');
   }
 });
 

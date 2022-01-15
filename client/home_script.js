@@ -51,7 +51,7 @@ logoutButton.addEventListener('click', async () => {
 });
 
 async function getCitiesSearch(city) {
-  results.innerHTML = '<h1>Loading Results ...</h1>';
+  results.innerHTML = '<h1>Naglo-load ng mga Resulta ...</h1>';
   window.scrollTo(0, document.body.scrollHeight);
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/location',
@@ -62,14 +62,14 @@ async function getCitiesSearch(city) {
   // LINQ - arr.first()
   let result = response.first();
   if (result.length === 0) {
-    window.alert('City not found in the database.');
+    window.alert('Hindi mahanap ang lungsod sa database.');
   } else {
     await getCityInfo(result);
   }
 }
 
 async function getCitiesNearMyLocation(latitude, longitude) {
-  results.innerHTML = '<h1 id="loading">Loading Results ...</h1>';
+  results.innerHTML = '<h1 id="loading">Naglo-load ng mga Resulta ...</h1>';
   window.scrollTo(0, document.body.scrollHeight);
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/coordinates',
@@ -91,7 +91,7 @@ function setListener(attr) {
   });
 }
 async function getCityInfo(cities) {
-  let resultHTML = '<h1>Search Result(s)</h1> <div id="resultsContainer">';
+  let resultHTML = '<h1>Mga Resulta ng Paghahanap</h1> <div id="resultsContainer">';
   
   for (let index = 0; index < cities.length; index++) {
     let woeid = cities[index].woeid;
@@ -105,8 +105,8 @@ async function getCityInfo(cities) {
       <h4>${data.title} ${data.location_type}</h4>
       <h5>${data.parent.title}</h5>
       <p>Timezone: ${data.timezone}</p>
-      <p>Coordinates: ${data.latt_long}</p>
-      <button id=${woeid} class="info btn btn-danger">Weather Details</button>
+      <p>Mga Coordinate: ${data.latt_long}</p>
+      <button id=${woeid} class="info btn btn-danger">Mga Detalye ng Panahon</button>
     </div>
       `;
   }
@@ -125,7 +125,7 @@ async function showPosition(position) {
     <div class="current-position-value"> ${userLongitude.toFixed(2)}`;
     
   currentLocationStatus.innerHTML =
-    '<h3>Fetching Current Location Status ...</h3>';
+    '<h3>Naglo-load ng Kasalukuyang Istatus ng Lokasyon ...</h3>';
   let response = await postHTTPRequest(
     'http://localhost:3000/weather/search/coordinates',
     { latitude: userLatitude, longitude: userLongitude }
@@ -146,10 +146,10 @@ async function showPosition(position) {
           <h4>${data.title} ${data.location_type}</h4>
           <h5>${data.parent.title}</h5>
           <p>Timezone: ${data.timezone}</p>
-          <p>Coordinates: ${data.latt_long}</p>
+          <p>Mga Coordinate: ${data.latt_long}</p>
         </div>
         <div class="box2">
-          <h3>Weather Condition: ${day.weather_state_name}</h3>
+          <h3>Kondisyon ng Panahon: ${day.weather_state_name}</h3>
           <img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" height="100" width="100"/>
         </div>      
       </div>`;
@@ -159,6 +159,6 @@ async function showPosition(position) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    location.innerHTML = 'Geolocation is not supported by this browser.';
+    location.innerHTML = 'Hindi suportado ng browser mo ang Geolocation.';
   }
 })();

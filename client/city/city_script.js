@@ -8,7 +8,7 @@ let location = '';
 
 favoritesButton.addEventListener('click', async () => {
   if (location === '') {
-    alert('Still Fetching Data ...');
+    alert('Kinukuha pa rin ang data ...');
   } else {
     let body = {
       woeid,
@@ -27,7 +27,7 @@ backButton.addEventListener('click', () => {
 });
 
 (async () => {
-  weatherOverview.innerHTML = '<h1>Loading Data...</h1>';
+  weatherOverview.innerHTML = '<h1>Naglo-load ng Data...</h1>';
   let res = await postHTTPRequest(
     'http://localhost:3000/weather/info/location',
     {
@@ -42,7 +42,7 @@ backButton.addEventListener('click', () => {
       <h2 class="location">${data.parent.title}</h2>
       <h4>${location}</h4>
       <p>Timezone: ${data.timezone}</p>
-      <p>Coordinates: ${data.latt_long}</p>
+      <p>Mga Coordinate: ${data.latt_long}</p>
     </div>
       `;
   // LINQ - arr.take(), arr.select(), arr.first();
@@ -54,21 +54,21 @@ backButton.addEventListener('click', () => {
     results.innerHTML += `
       <div class="dayWeather">
           <h1> ${day.applicable_date}</h1>
-          <p>Weather Condition: ${day.weather_state_name}</p>
+          <p>Kondisyon ng Panahon: ${day.weather_state_name}</p>
           <img src="https://www.metaweather.com/static/img/weather/${
             day.weather_state_abbr
           }.svg" height="100" width="100"/>
-          <p>Predictability:${day.predictability}</p>
-          <p>Humidity:${day.humidity}</p>
-          <p>Avg Temperature: ${day.the_temp.toFixed(2)}</p>
-          <p>Max Temperature: ${day.max_temp.toFixed(2)}</p>
-          <p>MinTemperature: ${day.min_temp.toFixed(2)}</p>
-          <p>Wind Speed:  ${day.wind_speed.toFixed(2)}</p>
-          <p>Wind Direction: ${day.wind_direction.toFixed(2)} ${
+          <p>Chansa:${day.predictability}%</p>
+          <p>Halumigmig:${day.humidity}%</p>
+          <p>Karaniwang Temperatura: ${day.the_temp.toFixed(2)} celsius</p>
+          <p>Pinakamataas na Temperatura: ${day.max_temp.toFixed(2)} celsius</p>
+          <p>Pinakamababang Temperatura: ${day.min_temp.toFixed(2)} celsius</p>
+          <p>Bilis ng Hangin:  ${day.wind_speed.toFixed(2)} mph</p>
+          <p>Direksyon ng Hangin: ${day.wind_direction.toFixed(2)} ${
       day.wind_direction_compass
     }</p>
-          <p>Air Pressure:${day.air_pressure}</p>
-          <p>Visibility: ${day.visibility.toFixed(2)}</p>
+          <p>Presyon ng Hangin:${day.air_pressure} millibar</p>
+          <p>Bisibiliti: ${day.visibility.toFixed(2)} milya</p>
       </div>
     `;
   });
